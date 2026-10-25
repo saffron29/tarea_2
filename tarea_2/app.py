@@ -115,20 +115,20 @@ with tab_resumen:
         fig = px.bar(conteo, x="tipo", y="documentos", color="tipo", color_discrete_map=COLORES_TIPO, text="documentos",
                      title="Documentos por tipo (según los filtros)")
         fig.update_layout(showlegend=False, xaxis_title=None, yaxis_title="documentos")
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
     with der:
         fig = px.bar(audios_f.sort_values("duracion_seg"), x="duracion_seg", y="id", color="productora", orientation="h",
                      hover_data=["titulo", "fecha_original"], title="Duración de cada clip, por productora",
                      labels={"duracion_seg": "segundos", "id": ""})
         fig.update_layout(height=520, legend_title=None)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.subheader("Tabla de registros filtrados")
     tabla = pd.concat([
         docs_f.assign(modalidad="documento", texto=docs_f["texto_ocr"], detalle=docs_f["tipo"])[["id", "modalidad", "detalle", "descripcion", "texto"]],
         audios_f.assign(modalidad="audio", texto=audios_f["texto_asr"], detalle=audios_f["productora"], descripcion=audios_f["titulo"])[["id", "modalidad", "detalle", "descripcion", "texto"]],
     ], ignore_index=True)
-    st.dataframe(tabla, use_container_width=True, hide_index=True, height=360)
+    st.dataframe(tabla, width="stretch", hide_index=True, height=360)
     st.download_button("Descargar CSV (textos seudonimizados)", tabla.to_csv(index=False).encode("utf-8"),
                        file_name="registros_filtrados.csv", mime="text/csv")
 
@@ -144,7 +144,7 @@ with tab_docs:
         with izq:
             imagen = EJEMPLOS / f"{doc_id}.jpg"
             if fila["imagen_publicable"] and imagen.exists():
-                st.image(str(imagen), caption=fila["fuente"], use_container_width=True)
+                st.image(str(imagen), caption=fila["fuente"], width="stretch")
             else:
                 st.info("La imagen de este documento no se publica (folleto sin licencia de redistribución). "
                         "El texto y los metadatos sí están disponibles.")
@@ -160,7 +160,7 @@ with tab_docs:
                     st.markdown(resaltar(fila["texto_referencia"], termino))
                     if len(eval_docs):
                         cer = eval_docs[eval_docs["id"] == doc_id][["modelo", "cer"]].sort_values("cer")
-                        st.dataframe(cer.round(3), hide_index=True, use_container_width=True)
+                        st.dataframe(cer.round(3), hide_index=True, width="stretch")
 
 # ───────────────────────────────────────────────────────── explorador de audios
 with tab_audios:
@@ -206,28 +206,28 @@ with tab_eval:
         st.markdown("Todos los modelos se evaluaron sobre **los mismos 10 documentos y 10 clips**, con transcripciones "
                     "de referencia hechas a mano y el mismo criterio de normalización (minúsculas, sin puntuación ni marcas "
                     "de hablante).")
-        st.dataframe(pd.DataFrame(metricas["tabla_comparativa"]), hide_index=True, use_container_width=True)
+        st.dataframe(pd.DataFrame(metricas["tabla_comparativa"]), hide_index=True, width="stretch")
         izq, der = st.columns(2)
         with izq:
             if len(eval_docs):
                 datos = eval_docs.groupby(["tipo", "modelo"], as_index=False)["cer"].mean()
                 fig = px.bar(datos, x="tipo", y="cer", color="modelo", barmode="group",
                              title="CER promedio por tipo de documento", labels={"cer": "CER", "tipo": ""})
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, width="stretch")
                 if modelo_ocr:
                     st.dataframe(eval_docs[eval_docs["modelo"] == modelo_ocr][["id", "tipo", "cer", "segundos"]].round(3),
-                                 hide_index=True, use_container_width=True)
+                                 hide_index=True, width="stretch")
         with der:
             if len(eval_audio):
                 fig = px.scatter(eval_audio, x="factor_tiempo_real", y="wer", color="modelo", hover_data=["id"],
                                  title="WER contra velocidad en cada clip", labels={"wer": "WER", "factor_tiempo_real": "factor de tiempo real (menos es más rápido)"})
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, width="stretch")
                 if modelo_asr:
                     st.dataframe(eval_audio[eval_audio["modelo"] == modelo_asr][["id", "wer", "factor_tiempo_real"]].round(3),
-                                 hide_index=True, use_container_width=True)
+                                 hide_index=True, width="stretch")
         if "auditoria_errores" in metricas:
             st.subheader("Auditoría humana del LLM: ejemplos de errores")
-            st.dataframe(pd.DataFrame(metricas["auditoria_errores"]), hide_index=True, use_container_width=True)
+            st.dataframe(pd.DataFrame(metricas["auditoria_errores"]), hide_index=True, width="stretch")
 
 st.caption("Fuentes: capturas propias de El Comercio y La Crónica (1939, 1945), Biblioteca Nacional del Perú y Wikimedia "
            "Commons (CC0, Public Domain Mark, CC BY-SA 3.0, CC BY 4.0). Detalle por archivo en datos/fuentes.csv.")
