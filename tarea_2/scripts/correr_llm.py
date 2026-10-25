@@ -11,8 +11,12 @@ import extraccion_llm as ex  # noqa: E402
 documentos = pd.read_csv(RAIZ / "datos" / "documentos.csv")
 audios = pd.read_csv(RAIZ / "datos" / "transcripciones.csv")
 registros = [(f.id, f.texto_ocr, "documento") for f in documentos.itertuples()] + [(f.id, f.texto_asr, "audio") for f in audios.itertuples()]
+if "--reverso" in sys.argv:  # un segundo proceso recorre la lista desde el final: ninguno repite lo ya guardado
+    registros = registros[::-1]
 tok = modelo = None
 for registro_id, texto, modalidad in registros:
+    if (ex.CACHE / f"{registro_id}.json").exists():
+        continue
     if not (ex.CACHE / f"{registro_id}.json").exists() and modelo is None:
         tok, modelo = ex.cargar_modelo()
     r = ex.extraer(registro_id, texto, modalidad, tok, modelo)
