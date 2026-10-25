@@ -1,0 +1,26 @@
+{
+ "nota": "Solo configuración: los pesos se descargan de Hugging Face / PaddleX la primera vez y no se versionan.",
+ "ocr": {
+  "paddleocr_base": {
+   "libreria": "paddleocr==3.7.0 (paddlepaddle==3.3.1)",
+   "modelos": ["PP-OCRv6_medium_det", "PP-OCRv6_medium_rec"],
+   "parametros": {"device": "cpu", "enable_mkldnn": false, "cpu_threads": 4, "use_doc_orientation_classify": false, "use_doc_unwarping": false, "use_textline_orientation": false},
+   "preprocesamiento": "imagen reducida a 2000 px en su lado mayor; página extraída del PDF sin recomprimir"
+  },
+  "paddleocr_preproc": {
+   "libreria": "paddleocr==3.7.0",
+   "modelos": ["PP-LCNet_x1_0_doc_ori", "UVDoc", "PP-LCNet_x1_0_textline_ori", "PP-OCRv6_medium_det", "PP-OCRv6_medium_rec"],
+   "parametros": {"device": "cpu", "enable_mkldnn": false, "cpu_threads": 4, "use_doc_orientation_classify": true, "use_doc_unwarping": true, "use_textline_orientation": true}
+  },
+  "easyocr": {"libreria": "easyocr==1.7.2", "idiomas": ["es"], "gpu": false, "detail": 1, "paragraph": false, "orden": "de arriba abajo y de izquierda a derecha"}
+ },
+ "asr": {
+  "corpus": {"libreria": "faster-whisper==1.2.1", "modelo": "mobiuslabsgmbh/faster-whisper-large-v3-turbo", "compute_type": "int8", "device": "cpu", "beam_size": 5, "language": "es", "vad_filter": true, "vad_min_silence_ms": 300},
+  "fw_small": {"libreria": "faster-whisper==1.2.1", "modelo": "Systran/faster-whisper-small", "compute_type": "int8", "device": "cpu", "cpu_threads": 4, "beam_size": 5, "language": "es", "vad_filter": true},
+  "fw_turbo": {"libreria": "faster-whisper==1.2.1", "modelo": "mobiuslabsgmbh/faster-whisper-large-v3-turbo", "compute_type": "int8", "device": "cpu", "cpu_threads": 4, "beam_size": 5, "language": "es", "vad_filter": true},
+  "qwen3_asr": {"libreria": "transformers==5.20.2", "modelo": "Qwen/Qwen3-ASR-0.6B-hf", "dtype": "float32", "device": "cpu", "segmentacion": "voz.tramos_de_voz (silencio 0,3 s, tramo máximo 12 s)", "idioma": "es"}
+ },
+ "diarizacion": {"libreria": "pyannote-audio==4.0.7", "modelo": "pyannote/wespeaker-voxceleb-resnet34-LM", "clustering": "aglomerativo, coseno, enlace promedio", "umbral": 0.7, "min_dur_voto_s": 1.0, "falso_hablante_si_voz_vad_menor_a_s": 2.0},
+ "ner": {"libreria": "transformers==5.20.2", "modelo": "mrm8488/bert-spanish-cased-finetuned-ner", "entidades": "PER", "score_minimo": 0.8},
+ "llm": {"libreria": "transformers==5.20.2", "modelo": "Qwen/Qwen3-1.7B", "dtype": "float32", "device": "cpu", "do_sample": false, "enable_thinking": false, "max_new_tokens": 350, "max_caracteres_entrada": 2500}
+}

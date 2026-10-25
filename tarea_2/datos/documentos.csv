@@ -1,0 +1,786 @@
+id,archivo,tipo,fuente,texto_ocr,modelo_ocr,texto_referencia,descripcion,imagen_publicable,n_lineas,n_caracteres,confianza_mediana
+doc_001,datos/raw/documentos/doc_001.jpg,impreso,"El Comercio, Lima, 1939 (captura propia) (dominio público en el Perú)","gran manifestación cívica que se
+tributará a
+Manuel
+Prado
+Candidato Nacional a la Presidencia de
+la República, el Domingo 15 de los co-
+rrientes, a las 2 p. m., en la Plaza de Acho.
+La Comisión.
+No. 17986",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,El Comercio (1939): aviso de manifestación cívica en la Plaza de Acho,True,9,204,0.999
+doc_002,datos/raw/documentos/doc_002.jpg,impreso,"El Comercio, Lima, 1939 (captura propia) (dominio público en el Perú)","Mensaje del Presidente de la
+República
+De la Oficina de Informaciones del
+Perú se nos comunica lo siguiente:
+El señor Presidente de la República
+leerá su Mensaje mañana sábado, a ho-
+ras 9 de la noche. Será trasmitido por
+Radic Nacional del Perú, en cadena
+con las otras radiodifusoras locales, re-
+trasmitido por las demás Estaciones de
+la República y difundido por todos los
+equipos altoparlantes instalados en el
+país.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,El Comercio (1939): «Mensaje del Presidente de la República»,True,13,421,0.996
+doc_003,datos/raw/documentos/doc_003.jpg,impreso,"El Comercio, Lima, 1939 (captura propia) (dominio público en el Perú)","VIVERES PARA EL
+""AUXILIO SOCIAL""
+E ESPAÑA
+DE
+Ante el inminente derrumbe de la zona roja, que hará necesario alimentar a más de seis
+millones de liberados, la Representación del Gobierno Nacionalista, la Delegación de Falange Eg-
+pañola Tradicionalista y de las JONS, y la Junta de Señoras del Ropero Peruano Español, ruegan
+a todas las personas que deseen contribuir a la colecta especial abierta para el urgente envío de
+víveres a España, se sirvan enviar sus donativos en metálico a la Tesorería de Falange Española
+Tradicionalista, Mantas 108, o a la del Ropero Peruano Español, Colmena 295. Los fondos que ss
+recauden serán invertidos en la adquisición de leche condensada para ser enviada directamente
+desde la fábrica a la España Nacional.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,El Comercio (1939): «Víveres para el Auxilio Social de España»,True,12,745,0.991
+doc_004,datos/raw/documentos/doc_004.jpg,impreso,"Ley N.° 8901, 1939 (captura propia) (texto oficial no protegido)","LEY N° 8901
+gales en el orden electoral y puede dificul-
+PRIMERA PARTE DE LA LEGISLA-
+tar, en la práctica, el funcionamiento de
+CION ELECTORAL DEL PERU O
+los organismos electorales;
+""ESTATUTO ELECTORAL"", que
+Que para subsanar estas anomalías, se
+comprende: Jurados Electorales, Re-
+inspira esta ley en los dispositivos del ac-
+gistro Electoral Naciónal y Obligación
+tual Estatuto Electoral y disposiciones vi-
+de Votar.
+gentes, conexionándolos entre sí, en un so-
+Derogando los Decretos-Leyes Nos. 7177
+lo espíritu, y armonizándolos con las mo-
+y 7287 y las Leyes Nos. 7780 y
+dificaciones, de detalle aconsejadas por la
+8252.
+experiencia, respetando siempre las bases
+constitucionales de la autonomía de los or-
+ganismos electorales y de la permanencia
+OSCAR R. BENAVIDES. GENERAL
+del Registro;
+DE DIVISION
+Que es indispensable, además, mantener
+en todo su vigor, para garantizar la máxi-
+Presidente Constitucional de la República.
+ma eficacia de la pureza y de la libertad
+Por cuanto: El Congreso Constituyente
+del sufragio popular. el mandato constitu-
+cional que ordena el voto secreto, directo
+ha concedido facultades legislativas al Po-
+y. obligatorio, garantía suprema para la li-
+der Ejecutivo, en virtud de la ley N°
+bre expresión, en las ánforas. de la volun-
+8463:
+tad ciudadana:
+Que estando pendientes de la consulta
+Considerando:
+plebiscitaria algunas reformas constitu-
+Que es necesario coordinar y unificar,
+cionales de índole electoral. como las que
+en un solo cuerpo de leyes. para su mejor
+se refieren a la representación minoritaria
+con tendencia a la proporcionalidad, di-
+aplicación y su mayor eficacia, todas las
+disposiciones legislativas. en materia elec-
+rectamente vinculada al sistema electoral
+toral. dispersas en el Estatuto Electoral,
+departamental o provincial. no podría le-
+Decreto — Ley N° 7177, (1) de 26 de ma-
+gislarse sobre esta materia sino después de
+yo de 1931: Reglamento expedido por De-
+realizado el referendum;
+cieto Supremo de 8 de junio de ese mismo
+Que sin embargo puede legislarse des-
+año: Decreto — Ley Nº 7287: (2) amplia-
+de ahora, y es conveniente hacerlo para
+torio del Estatuto Electoral, de 28 de a-
+que el proceso electoral se cumpla estricta-
+gosto de 1931; y leyes números 7780 (3).
+mente. sin retardo alguno. sobre todos aque-
+. 8252. (4) promulgadas, repectivamente,
+llos organismos electorales que no están a-
+el 8 de agosto de 1933 y el 29 de abril de
+fectos a la consulta plebiscitaria, tales co-
+1936:
+mo los Jurados Electorales y el Registro
+Que no pocos de los preceptos de esas le-
+Electoral, sus fines, su personal, sus libros
+yes dispersas han sido derogados, modifi-
+y su funcionamiento;
+Que las atribuciones de los Jurados Elec-
+cados o sustituídos por disposiciones lega-
+torales y las reglas sobre inseripción de par-
+les posteriores, lo que evidentemente
+tidos políticos y de candidatos, procedi-
+entorpece la aplicación de las pautas le-
+miento electoral, garantías electorales y pe-",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Ley 8901, Estatuto Electoral (1939), primera página",True,80,2959,0.994
+doc_005,datos/raw/documentos/doc_005.jpg,impreso,"El Comercio, Lima, 1945 (captura propia) (dominio público en el Perú)","PARTIDO NaCIONAL LABORISTA
+Juan
+Jorge Salas
+CANDIDATO DEL PARTIDO A UNA DIPUTACION POR LIMA
+Hombre nuevo en las arenas del campo electoral, PROMETE que lucha-
+rá con entusiasmo por conseguir el programa que se ha trazado, con la ex-
+periencia adquirida cn el trabao.
+UN AMPLIO COMPENDIO DE LEYES LABORISTAS. Que Comprenda.
+un Código del Trabajo, del Empleado, dcl Campesino e Indigena, uno espe-
+cial de. Menorcs y de la Mujer, completándose esto con una Legislación So-
+cial amplia para las clases desamparadas.
+PROPICIADOR DEL VOTO FEMENINO Y DE LA INTRODUCCION
+DE LA MUJER EN LOS ATOS CARGOS ADMINISTRATIVOS DE LA
+NACION.
+Ampliador de los sistemas cooperativos, como el formidable puente que
+salvará la distancia entre el Capital y el Trabajo.
+Peruanista 100 por 100, desea el Perú para los Peruanos, y que todos los
+negocios, comercios e industrias pasen a manos de peruanos.
+Pedirá intensas mejoras en la reglamentación de la Caja Nacional del
+Seguro Social, CREANDO ADEMAS EL SEGURO POR DESOCUPACION
+Y FAMILIA NUMEROSA, EL RETIRO DEL LABORISTA DESPUES DE
+25 AÑOS DE TRABAJO CONTINUADO CON GOCES COMPLETOS.
+QUE EL AMPLIO CODIGO DEL EMPLEADO COMO EN EL DE LOS
+TRABAJADORES SE CONTEMPLE UNA PARTICIPACION EN LAS UTI
+LIDADES.
+La abolición de los 3 meses de prueba y que el seguro del empleado s
+comience a contar desde el día que ingresa al empleo.
+La abolición y reglamentación del trabajo nocturno en las panaderías.
+QUE EL PAGO DE LAS POLIZAS DE LA LEY DE ACCIDENTES DEL
+TRABAJO NO SEA UN LUCRO PARTICULAR Y QUE PASE A LA CAJA
+NACIONAL DEL SEGURO SOCIAL.
+QUE SE ATIENDA ENTRE LAS ENFERMEDADES PROFESIONALES
+A LAS REGIONALES TUBERCULOSIS Y PALUDISMO.
+Que se abran las puertas de las Universidades a los hijos de los obreros
+gratuitamente y que la Instrucción media sea gratis en toda la República.
+JUAN JORGE SALAS, OFRECE TRABAJAR EN EL PARLAMENTO
+POR OBTENER QUE SE CRISTALICEN LAS ORIENTACIONES DEL AL-
+MA DE LA CARTA DEL ATLANTICO.
+EL DERECHO DE LOS INDIVIDUOS Y EL DERECHO DE LAS NA-
+CIONALIDADES.
+JUAN JORGE SALAS",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,El Comercio (1945): aviso del Partido Nacional Laborista,True,41,2023,0.992
+doc_006,datos/raw/documentos/doc_006.jpg,impreso,"El Comercio, Lima, 1945 (captura propia) (dominio público en el Perú)","Se instaló el Jurado Provincial
+de Elecciones de Lima
+COMUNICADO OFICIAL
+De conformidad con lo dispuesto en
+el Arto. 15o. del Estatuto Electoral
+(Ley No. 8901), se instaló el Jurado
+Provincial de Elecciones de Lima en su
+local situado en los altos del Senado,
+en el Falacio Legislativo, bajo la pre-
+sidencia del Ingeniero don Felipe Gon-
+zález del Riego y actuando como Se-
+cretario el doctor don Carlos Ledgard
+Jiménez.
+Er. cumplimiento de los artículos
+16o. y 17o. del Estatuto Electoral se
+procedió a designar a los cuatro ciu-
+dadanos en ejercicio, entre los cuales
+debe sortearse el Delegado al Jurado
+Departamental de Elecciones.
+Fueron nominados los siguientes ciu-
+dadanos:
+Don [PERSONA_01].
+[PERSONA_03]
+[PERSONA_02] [PERSONA_05].
+Lima 9 de marzo de 1945.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,El Comercio (1945): «Se instaló el Jurado Provincial de Elecciones de Lima»,True,26,765,0.996
+doc_007,datos/raw/documentos/doc_007.jpg,impreso,"El Comercio, Lima, 1945 (captura propia) (dominio público en el Perú)","EL COMERCIO.-LIMA. JUEVES  DE MARZO DE 13A
+CANDIDATURA A LA PRESIDENCÍA DE LA REPUBLICA
+DEL
+GENERAL DE DIVISION
+ELOY G. URETA
+Comité Central
+Se hace saber a todos los adherentes a la Candidatura de Unión
+Nacional, que encarna la gloriosa figura del General de División
+Eloy G .Ureta, que la CASA POLITICA donde funcionará el COMITE
+CENTRAL. abre hoy sus puertas, y que tanto la organización de
+CLUBS POLITICOS como la INSCRIPCION DE ADHERENTES y
+el SERVICIO DE PROPAGANDA han sido transferidos de DIVOR-
+CIADAS No. 671 al JIRON CUZCO (Corcovado) No. 410, en donde
+nuestros correligionarios y amigos serán atendidos de 9 a. m. a 1
+p. m. y de 4 p. m. a 8 p. m.
+Las personas encargadas de funciones específicas de organización
+y propaganda, deberán presentarse en sus respectivos Departamentos
+hoy a las 10 a. m.
+El General Ureta asistirá a la inauguración de la Casa, a las ó p. m.
+Hacia la grandeza del Perú por la Unión Nacional
+Lima, 22 de Marzo de 1945.
+EL COMITE CENTRAL.
+97035",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,El Comercio (1945): comunicado del Comité Central de la candidatura del Gral. Ureta,True,23,980,0.996
+doc_008,datos/raw/documentos/doc_008.jpg,impreso,"La Crónica, Lima, 1945 (captura propia) (dominio público en el Perú)","INSTALOSE EN EL SENADO EL JURADO
+PROVINCIAL DE ELECCIONES DE LIMA
+COMUNICADO OFICIAL
+De conformidad con lo dispuesto en el art. 15º del Estatuto Electoral (Ley
+No 8901, se instaló el Jurado Provincial de Elecciones de Lima en su local,
+situado en los altos del Senado, en el Palacio Legislativo, bajo la presidencia
+del Ingeniero don Felipe González del Riego y actuando como Secretario el
+Dr. Dn. Carlos Ledgard Jiménez.
+En cumplimiento de los arts. 16º y 17º del Estatuto Electoral se procedió
+a designar a los cuatro ciudadanos en ejercicio, entre los cuales debe sortear-
+se el Delegado al Jurado Departamental de Elecciones.
+Fueron nominados los siguientes ciudadanos:
+Don [PERSONA_01], Don [PERSONA_03], Don
+[PERSONA_02] y [PERSONA_05].
+Lima, 9 de marzo de 1945.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,La Crónica (1945): «Instalóse en el Senado el Jurado Provincial de Elecciones de Lima»,True,15,768,0.995
+doc_009,datos/raw/documentos/doc_009.jpg,foto,"Bloque Antifascista Peruano, 1945 (foto propia) (uso académico, imagen no publicable)","04,2493
+UNIVERSIDAD CVTOLIGA DEL PERU
+BIBLIOTECA
+COMPRA
+PRESENTAMOS:
+Consolidemos la victoria del Pueblo
+Tres
+Párrafos del Manifiesto del
+BLOQUE ANTIFASCISTA PERUANO
+A
+NIMADOS por la conciencia de esta nueva situación y con
+el deseo de seguir trabajando por la causa popular, nos he..
+mos asociado en un BLOQUE ANTÍFASCISTA y, continuando y
+Discursos
+reafirmando campañas anteriores, nos hemos impuesto la tarea
+de contribuir, hasta el límite de nuestra capacidad, al triunfo
+de los ideales democráticos y a la instauración de un orden po-
+lítico racional que saque al Perú de su forzado estancamiento,
+para llevarlo a una vida próspera y digna, libre por fin de pas
+asechanzas y conspiraciones fascistas o neofascistas.
+No constituímos un partido político ni un grupo de ""elite""
+sino una alianza cívica y cultural que se propone cooperar efi.
+cazment? en la empresa de consolidar la victoria del pueblo en
+el Perú"".
+(Campaña Eleccionaria
+para el período
+""En este momento eulminante de la Historia, nuestro deber
+consiste en llevar adelante, hasta su consumación, una lucha im-
+1945-1951)
+placable contra los restos de la ideología fascista, que los venci.
+dos quieren reunir apresuradamente para utilizarlos en una
+guerra contra el pueblo"".
+*
+""Queremos destruir todas las vallas que una política ultra-
+conservadora, de inspiración innegablemente fasoista, ha pues.
+to en el camino de nuestro progreso, con el propósito de impedir
+que el pueblo se instruya y dignifique. No hay duda que la falta
+de garantías, los atropellos contra la libertad individual, la cen-
+sura de noticias, libros y películas y, en general, toda la cam-
+paña de oscurantismo que se ha venido realizando en el país du-
+BLOQUE ANTIFASCISTA PERUANO",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"«Tres discursos» (1945): portada y manifiesto, libro abierto fotografiado",False,41,1721,0.997
+doc_010,datos/raw/documentos/doc_010.jpg,foto,"Bloque Antifascista Peruano, 1945 (foto propia) (uso académico, imagen no publicable)","TRES
+DISCUR
+s
+O
+esta imponente asamblea de civismo: la esperanza de ver -
+prada en el Perú la normalidad democrática, y el propósito de pro-
+elamar la necesidad de un proceso electoral limpio y honesto para al.
+canzarla.
+vu
+El país ha vivido varios lustros de prueba desasosegada y do-
+lorosa. Conmociones de pueblo joven que busca su destino a tra-
+véa de una realidad deficiente o viciada. Complicado concurso de
+inquietudes ideológicas, de apasionamientos dañinos, de rebeldía
+ante el abuso, de egoísmo reaccionario de las oligarquías y, con fre-
+euencia, de exceso de autoridad en los personeros del Poder. El
+aldo de este período tenso e inestable de nuestra historia políti-
+sa es el debilitamiento de las Instituciones tutelares de la Repúbliea
+y el recorte de la personalidad del cindadano en función de la vida
+rfvica. Las libertades individuales y sociales garantizadas por la
+Constitución se mantienen precautoriamente restringidas, aún des-
+pués de apaciguado el clima de beligerancia interna. Un sector de
+la cludadanía vive al margen de la ley y de la agtividad pública, por
+nbra de preceptos cuya serena revisión, a la luz de alteriores cir-
+punstancias, no ha llegado a intentarse. Y las masas independientes
+lel país, disgregadas y desorientadas por la obligada anemia de la
+pida política y por falta de estímulos para la formación de partidos
+9",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,«Tres discursos» (1945): página con sombra y curvatura,False,27,1362,0.983
+doc_011,datos/raw/documentos/doc_011.jpg,foto,"Bloque Antifascista Peruano, 1945 (foto propia) (uso académico, imagen no publicable)","ICTOR RAUL HAYA DE LA TORRE
+JEFE SUPREMO DEL PARTIDO
+DEL PUEBLO (APRISTA), SE DIRI-
+GE A UNA GIGANTESCA MANIFESTACION
+DE MIEMBROS DE SU PARTIDO, EN LA
+PLAZA SAN MARTIN, EN CELEBRACION
+DEL RECONOCIMIENTO OFICIAL DE LOS
+DERECHOS POLITICOS DEL MISMO
+(20 de Mayo de 1945)",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,«Tres discursos» (1945): portadilla del discurso del jefe del Partido Aprista,False,9,267,0.998
+doc_012,datos/raw/documentos/doc_012.jpg,foto,"Bloque Antifascista Peruano, 1945 (foto propia) (uso académico, imagen no publicable)","ORGE ACOSTA, SECRETARIO GENE-
+RAL DEL PARTIDO VANGUARDIA
+SOCIALISTA DEL PERU (COMUNIS-
+TA), SE DIRIGE A DECENAS DE MILES DE
+MILITANTES Y SIMPATIZANTES, EN EL
+TEATRO BOLIVAR, CON OPORTUNIDAD DE
+LA INSCRIPCION DEL PARTIDO EN EL
+REGISTRO ELECTORAL
+(8 de Junio de 1945).",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,«Tres discursos» (1945): portadilla del discurso del Partido Vanguardia Socialista,False,9,266,0.999
+doc_013,datos/raw/documentos/doc_013.jpg,foto,"El Comercio, Lima, 1945 (foto propia) (dominio público en el Perú)","SE DECLARA EL ESTADO DE BELIGERANCIA
+ENTRE EL PERU Y ALEMANIA Y JAPON
+EL 1o. DE ENERO DE 1942
+entonces, la posición internacional del Perú.
+causa de las Naciones Unidas, a cuya politica ya se había adherido el Perú.
+Al producirse el ataque y hundimiento de barcos que navegaban con ban-
+dera de naciones americanas, el Perú, en cada caso, formuló su protesta y
+cxpresó sus sentimientos de solidaridad continental condenando esas agre-
+siones de Alemania contra la soberania de los países de América.
+Cuando la Reunión de Cancilleres de Rio de Janeiro, el Jefe del Esta-
+do hizo pública declaración de que el Perú, siguiendo fielmente en su inva-
+riable actitud, estaba resuelto a romper relaciones con las potencias del
+Eje y que asi lo expresaria en el momento oportuno el Ministro de Relacio-
+Asamblea la ejecución inmediata de dicha recomendación.
+continental.
+1o. de enero de 1942.
+clonal.
+Lama, 11 de febrero de 1945.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,El Comercio (1945): «Se declara el estado de beligerancia entre el Perú y Alemania y Japón»,True,18,922,0.994
+doc_014,datos/raw/documentos/doc_014.jpg,foto,"El Comercio, Lima, 1945 (foto propia) (dominio público en el Perú)","PARTIDO
+DEMOCRATICO
+REFORMISTA
+Debiendo celebrarse una sesión solemne, el 19 del corriente, a las 5 y media p. ml. en el
+local de la Pileta de La Merced 170, como homenaje de simpatía a la memoria de Don Augusto
+B. Leguía, fundador del Partido, y en recuerdo de su onomástico; se invita a dicha actuación a
+los miembros de la Junta Central Directiva y a los simpatizantes que deseen asistir.
+El discurso de orden será pronunciado por el señor Dr. Dn. Alvaro de Bracamonte y Orbegosa.
+Lima. 16 de febrere de 1945.
+LOS SECRETARIOS",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,El Comercio (1945): aviso del Partido Democrático Reformista,True,10,528,0.994
+doc_015,datos/raw/documentos/doc_015.jpg,foto,"La Crónica, Lima, 1945 (foto propia) (dominio público en el Perú)","ACTIVIDADES OFICIALES
+CONFERENCIA CON EL MINIS-
+TRO DOCTOR CISNEROS SANCHEZ
+Después de la sesión de Consejo de
+Ministros de que damos cuenta, con-
+ferenció ayer con el Mandatarlo el
+Dr.. Manuel Cisneros Sánchez, Minis-
+tro de Justicia y Trabajo, encargado
+a la vez de la cartera de Relaciones
+Exteriores y Culto.
+y 15 de la tarde, y, según se informó
+a los periodistas estuvo dedicada a
+POR ASÚNTOS DEL SERVICIO
+ayer,
+resolver diversos asuntos de carácter
+Por asuntos del servicio fueron re-
+Gobierno, el Consejo Ordi-
+administrativo.
+cibidos el Director de Gobierno, Dr.
+lacio de
+Ministros, con asistencia de
+Alejandro F. Barrios; Secretario Ge-
+rio de
+miembros, a excepción del
+El Ministro de Justicia y Trabajo,
+neral del Ministerio de Relaciones Ex
+dous sus
+del Gabinete y Ministro de
+teriores, Dr. Javier Correa; Director
+esidente
+Julio L. East y del Mi-
+Encargado de la Cartera de Relaciones
+de Hacienda, Dr. Ernesto Alayza;
+acienda,
+señor
+Exteriores, dió cuenta de las informa-
+Primer Jefe del Regimiento ""Escol-
+ciones suministradas por la Delegación
+ta"", Coronel Luís Fajardo; Contra-
+Peruana en la Conferencia Interameri-
+lor General de la República, señor Gui
+entra en México.
+cana sobre Problemas de la Guerra y
+llermo Ronald; Teniente Comandante
+La sesión se inició a las nueve de
+C.A.P. Carlos Moya, Agregado Aé-
+reo de la Embajada de la República
+en Méjico: Director de Minas y Pe-
+tróleo, ingeniero Artidoro Alvarado;
+Rotary Club de Lima
+Director del Protocolo, Dr. Santiago
+F. Bedoya.
+AGRADECIMIENTO DELOS ESTI-
+BADORES DEL CABOTAJE MENOR
+Una comisión. de la Sociedad ""U-
+nión Estivadóres del Cabotaje Menor""
+presidida por el señor [PERSONA_06]
+Viaje a la Conferencia Bidistrital de Arequipa
+va, se constituyó ayer en Palacio de
+Góbierno con el objeto de hacer lle-
+gar sus agradecimientos al Jefe del
+Se pone en conocimiento de los señores rotarios y sus
+Estado, doctor Manuel Prado, por
+la expedición del Decreto Supre-
+familias que viajen a la Conferencia Rotario Bidistrital do
+mo de 10 de Febrero último, re-
+Arequipa, que el vapor que los conducirá saldrá el miérco-
+lacionado con los jubilados del Ter-
+minal Marítimo del 'Callao.
+les 14 a las 12 m. (hora exacta).
+EL SECRETARIO.
+de la Paz, que acaba de terminar en
+la ciudad de México.
+Los Ministros de Fomento y Obras
+Públicas y de Aeronáutica informaron
+sobre su visita a las obras de construc-
+JURADO PROVINCIAL DE ELECCIONES
+ción de los locales para las Escuelas
+de Oficiales y de Suboficiales de A-
+viación en los terrenos de Las Palmas
+DE LIMA
+que cubren un área total de 56,600 me-
+tros cuadrados.
+La primera consta de nueve pabe-
+Llones y ocho hangares; la de Subofi-
+ciales de dos pabellones y talleres.
+Todos los edificios tienen cimentación
+los siguientes ciudadanos:
+profunda, estructura de cemento ar-
+mado y albañilería de ladrillo. En al-
+[PERSONA_01], Fernando
+gunas zonas las condiciones del subsue-
+Forero Nugent, Manue!
+lo han hecho necesarias cimentaciones
+especiales con pilotaje de concreto.En
+[PERSONA_02], Manuel E
+los hangares, cuyo techo es aboveda-
+[PERSONA_05], Manuel.
+do, de concreto armado, del tipo ""cás-
+Lima, 9 de Marzo de 1945.
+cara"", de seis centímetros de espesor,
+con luces de treinta metros, ha sido
+necesario llegar en la cimentación a 8
+metros de profundidad, para asentar
+PONTIFICIA UNIVERSIDAD CATOLICA
+debidamente las zapatas.
+Las condiciones fuertemente húme-
+das del subsuelo han hecho necesario
+el encauzamiento de las aguas subte-
+rráneas, mediante un extenso sistema
+DEL PERU
+de desagües. Se han hecho nivelacio-
+nes en extensas áreas del terreno, pa-
+ra los diversos campos y vías de acce-
+so. Ya se han terminado cinco gran-
+des edificios y se encuentran muy a-
+vanzados los restantes. Las instala-
+ciones de agua y desagüe y luz eléctri-
+ca estarán expeditas en el próximo
+mes de abril.
+En la construcción de los pabello-
+nes y hangares han intervenido dlecl-
+sels firmas constructoras, bajo la su-
+pervigilancia de la Dirección de Fo-
+mento y Obras Públicas y ésta ha e-
+jecutado diversos trabajos por admi-
+nistración.
+El Ministro de Fomento informó que
+se ha reanudado el tránsito entre el
+Lima, 5 de Marzo de 1945.
+Puerto de Chimbote y la Estación de
+Huallanea,
+que quedó interrumpido
+(PASA A LA PAG. 14)",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"La Crónica (1945): informes de los ministros y avisos, columna curvada",True,134,4235,0.993
+doc_016,datos/raw/documentos/doc_016.jpg,foto,"El Comercio, Lima, 1939 (foto propia) (dominio público en el Perú)","L manieacdyela
+Plaza de Acho
+de la República, pro-
+la Presidencia
+elecciones
+próximas a realizarse.
+""Afirmación del Sentimiento Nacio-
+Social,
+Dignificación de la
+Justicia
+Estado, son los principios bá-
+dora del
+i ideario político que de-
+sicos de mi
+terminarán, en sus aplicaciones parti-
+he pronunciado en esta campaña cí-
+vica, un solo cuerpo orgánico de doc-
+trina y de acción de Gobierno.
+""Deseo expresar que mi concepto de
+la función de Gobierno reposa sobre la
+convicción de que la grandeza nacio-
+nal, como hecho de conjunto, debe,
+necesariamente, ser la resultante del
+bienestar individual de todos los ciu-
+dadanos y no debe edificarse sobre la
+miseria de los más y el privilegio de los
+menos, y que el progreso material no
+adquiere todo su valor, sino cuando es
+el exponente de la cultura espiritual.
+""Dejo asimismo constancia de que la
+profesión de fe de toda mi vida, ha si-
+do creer en las fuerzas morales lla-
+madas a gobernar el mundo, que son
+las únicas capaces de dignificar a los
+pueblos y de hacerlos marchar hacia
+la conquista de su porvenir. Creo en
+la acción de los imponderables que
+rompe las ecuaciones matemáticas de
+la vida física y que realiza los porten-
+tosos milagros de las naciones predes-
+tinadas, que asombran al universo con
+sus hechos heroicos.
+""Y porque tal es mi fe cierta y abso-
+luta, afirmo, apoyado en los hechos
+gloriosos de nuestra historia, que quie-
+nes hemos recibido la herencia mag-
+nífica de una raza y de una cultura
+que debemos exhibir con orgullo, te-
+nemos las virtualidades latentes que,
+bajo la acción de nuestra voluntad,
+nos crearán un futuro tan grande como
+el de los primeros países de América.
+""Al entregar al juicio de mis conciu-
+quiero dejar expresa constancia de que
+to nacionales
+mario:
+Estructura
+del
+Estado. Recursos
+pital Privado.
+Régimen
+Tributa-
+rio. Producción:
+Agricultura, Ga-
+nadería. Pesquería.
+Minería. Indus-
+y Urbanismo. Pobla-
+ra Física y
+ Alimentación. Cultu-
+Deportes. Trabajo. Proble-
+Colonización. Territo-
+Descentralismo. Turis-
+vidades
+ticia y
+Justicia.
+Religión:
+Administración de
+Nacional.
+Religión del Estado. Defensa
+Democracla
+Relaciones
+Internacionales.
+Unión Nacional.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"El Comercio (1939): «La manifestación de ayer en la Plaza de Acho», columna inclinada",True,83,2162,0.998
+doc_017,datos/raw/documentos/doc_017.jpg,manuscrito,"Biblioteca Nacional del Perú, vía Wikimedia Commons (CC0)","49
+  medgy
+
+
+mathuath
+Senrr dom Ricardo Palma
+ma
+Livng.
+
+o
+mia
+
+Desde estao apartades co-
+wihab wien
+taivrouto anl waa
+marcas deseo manifestar a al. el profimdo dolor que he
+""
+
+
+sentido al informarme que espiritus estrechis, veugativos,
+
+elanune
+han arrancado a' ll, por la fuerza, de la casa que U reedi.
+
+
+ficara,-pam honra die Peri,- a coeta de tants esfuerzos
+
+g sacrificios.
+Jamas hubiera ereido gue mandatario
+
+algimo se atreviera a turbar ol posiego que aual ningimo
+
+
+
+hombre algimo osara faltar las canas de tan insigne lite
+ekeno
+rato, canas resketadas xiempre peir psofeirs g extraños, por
+aoti
+
+Jovenes J mriejis, por nicos g pobres.
+ondne
+Desde 1888, que se findi la Sociedad Geografia
+
+
+
+
+Nacinal, es decir quatro aines destones que al. la hiciera
+renacer con sus esfuerzos, reputacior influencias, he-si-
+
+do puedo tecir testigo de sn inmenen labor de su asidui
+
+dad, de sus fatigas.
+Todo su tiempo era absorbido for
+rbay atiato
+
+las ateneiones  uidados de la familin I
+a",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Carta de Carlos J. Bachmann a Ricardo Palma (1912), p. 1",True,57,986,0.557
+doc_018,datos/raw/documentos/doc_018.jpg,manuscrito,"Biblioteca Nacional del Perú, vía Wikimedia Commons (CC0)","de recibo, pareceme verlo, pertado en su xillon, dando sabirs
+conejos I quiando en sus preteneiones de periodieta aeste
+SP
+humilde Reriidor ouyo.
+Muchas, muchas, fueron las veces que acudia U.,
+como otros tantes, - en demanda de dates i informaciones; g
+°V
+so, paternal, me daba lecciones de historia patria, relatando-
+me fom miniciosidad mil incidentes de aguellos gue no pu-
+
+ar
+blican Ins diarios I que M. recordaba cou notable precision.
+Tenta anos de erda, penee eseribir algo sobre la hietoria del
+decano de miestm ferenea perirdica: recurri aU. g con
+
+su findad ingenita me facilito' cuanta información nece-
+
+Ritaba para la redaccion de ese articulo, refiriéndome mil
+anggn leng nd geaed hoth
+I n smgidentes de la rida de ese valiente é imparcial
+eue abo megt me 
+miro que per ahn conservo, kues no se pudo per agul enton
+OO
+ces celebrar esa efemerides como correspondia, a canea de
+rog bannitiove
+iona
+Is graves suesss que surgieron eou las naciones limitrofes.
+Siempre lo recuerdo a ll. con carino g respeto, Joues
+4eton
+DUND
+ 
+cual ningimo acaro he tenido la puerte di hablar con M. con
+
+frenuencin, en aquellas tardes agradables eri lrs talonus de la
+
+Sociedad Seografich, cuando la presidia eu habil J entu-
+
+Reasta findador, el inoliidable Sr. Tuis Barranza. Alli
+wubiao  aseomemy 
+wasabeua
+escuchaba las suteresantes conversaciones del mucleo de hom-
+",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Carta de Carlos J. Bachmann a Ricardo Palma (1912), p. 2",True,42,1367,0.826
+doc_019,datos/raw/documentos/doc_019.jpg,manuscrito,"Biblioteca Nacional del Perú, vía Wikimedia Commons (CC0)","2.
+wnetie wao    athationg ndabnd wnerdint
+me sirvieron do esvela, g me enorgulbecian nuicho, por el
+ favor gue me diepensalan al permitirme eocucharlas.
+En mis raths de aburrimiento, meyor decho de deses.
+peracion, en eetas anoutanas de severo alimga, de miltiples
+ privaciones, leyos, mny legos de mai gqueridaspatria, de mi
+madre, de mis amigos, he pensado mas de ma vez en mi
+ vida de la Soaedad leografica, en sus inteligentes pocis,
+que poco a'poco van djando este mundo, aburridn pin
+duda de tanta ingratitud, de tanta ndolenain. lon el
+pensamiento me trasport a ssa mi eide des secretario de
+esa docta g ictil institución cientifion,ng paréceme que al
+ascender las amplias gradas de marmol gue dan accees
+ipus oficinas, tengo el feliz enenentro,-como aentecia con
+frecueicia,- de hallarme eom el voverable tradicionieta que
+bajaba a us faenas auotidianas a ln Ribliateca, asen hija
+suya, exclusivamente siya; g que me houraba deteniéndome
+algams minutr para pregrmtarme noticias s darme ensejos.
+La no tendré por cierto esta puerte euando regrese a
+mi incomparable dima, si acaso rueloo a oeupar mi pues.
+to. eis la Sociedad Leografich; ga no lo veré aM. en eu es.
+critoriso leyendo é contatando cartes de les repeutaciones literaries
+del mindo;fino veré a sus amantes hijas paceandose en lrs
+amplis corredores acts; ga no vere a' sus preciosos nietecits
+Jugueteando aqui g alla, siriendo de chochera eneantadora
+u abuelit
+Nada de eeto volveré a ver: if vetusto
+edificis ha de resentiree em u , y si pudra hablar,",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Carta de Carlos J. Bachmann a Ricardo Palma (1912), p. 3",True,29,1521,0.854
+doc_020,datos/raw/documentos/doc_020.jpg,manuscrito,"Biblioteca Nacional del Perú, vía Wikimedia Commons (CC0)","S
+hubiera amido sus protestas a las de la nacion entera po el
+inicno ateutado de que ha sido . victima
+onreme l, am Bioardo, com cuatro letras que
+mstrare orgulboso amis amigis de estas selias, gue mucho
+gtan de Rus aloas Godoo ellr comocenl. por en fa
+ma literaria, angue algums no han tenido oportimidus
+com me sless amsteerom abeamed it snpioras aim at, erbere
+i  Recil de marte  de lade mi reiora
+respetuotes paludis gara lg sis digres hijas; alema
+ faunto abrazo, mdy estrecho, miry agradecido, may
+opincera, de guiena fien sabe t lo piiere, to respeta g lo
+do np emeseeiteis mat iyd
+
+ nicetires amsontrerere  ayis aei
+semp stairaiubont aldo reron le mas emyaltant ib  weneriert
+yotare i putaildist it is aamaubit as anves ans'is codapo
+emabenaineted odniat ens enp  auy tlose u
+ars emiad a ciates emotingory us ertiurins ame
+s scenper abnors atherns atae athivo a inbinet an ot
+ceng inm nogpius is ouleure aaers ie amn eltono gpmoans im
+we wweo a an ap
+aiionetd anitatinaon sel it tsos abrmaatins à abrapied arin
+a me saad aiet atars e s erer a atiis is
+aitin i 's  a a es raa uns
+atatroone worehoate ib absariric willo f inge abrastespin
+tiluthowit
+tanton he:wesn is snowton atee it wboll
+relded n is  wa enritieden it at aiite
+",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Carta de Carlos J. Bachmann a Ricardo Palma (1912), p. 4",True,30,1235,0.64
+doc_021,datos/raw/documentos/doc_021.jpg,manuscrito,"Biblioteca Nacional del Perú, vía Wikimedia Commons (Public Domain Mark)","Frigillo;, 9 de pilis 917
+o. gori lavi Eque
+Bannnco.
+hosvemente coumovid bé su aleut carth,
+eugos timins le ageadgeo de visao. Elle me ks
+reanimad nenchio, n sets deas n gu me sar
+tir tan anal; fes agri kay guimes sme alacan
+coe trt rudaga...! lil graios, seers Egue.
+rem;  gmtil. a ym bonot. one km keche ome
+ehs lier; mil grais.
+En ates bias, alnt a Irisi canivn do Ue.,
+ewini a I seist tenccini at a Gagagil
+algemos de suis vessos; y dlis pisa gue guite.
+slli peruiti ategal al pllicns l coite
+sid o n eitad earte, al reelo solint re
+me licioon de ella,- U. roone; -Hoy Le svvis
+four sste nionm sapor im minon al tn Afor
+nen"" in gur fui fublicain.
+Hay so fawient, por oo salt, y one
+reiter, he Wt. on afutiimss
+imitralle
+Carta de César Vallejo a José María Eguren.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Carta de César Vallejo a José María Eguren (Trujillo, 1917)",True,22,767,0.676
+doc_022,datos/raw/documentos/doc_022.jpg,manuscrito,Wikimedia Commons (Leguicall) (dominio público),"Agredvaco mmy sineeraomeals
+Ta dina atonsiln de n foren a-
+ mingo Imio Untomin Epginiguren al
+pleegniarme los do foletitos coge le-
+infimith gut, auundh b ad proible, Garo-
+roxia con n oprcita slite aest
+Merafbores, 2bsds Orbibre de/912.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Tarjeta de Ricardo Palma (1912), recorte de la parte manuscrita",True,7,237,0.748
+doc_023,datos/raw/documentos/doc_023.jpg,manuscrito,Wikimedia Commons (archivo Burzagli) (Public Domain Mark),"POLICIA DE LIMA
+TARJETA DE CIRCULACION
+Los Agentes de Policía y de la fuerza
+1921
+pública permitirán circular libremente la per-
+sona y el carruaje del
+eirr Capitan di mavis [PERSONA_04]-
+[PERSONA_04] Covandante dul traee Libia
+Wiembro de la Emba fral Ifaliana
+y cortar filas si no hay impedimento de fuerza mayor.
+El Prefecto de Lima
+oonve
+Esta tarjeta es intranalerible",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Tarjeta de circulación de la Policía de Lima (1921), llenada a mano",True,13,371,0.991
+doc_024,datos/raw/documentos/doc_024.jpg,manuscrito,Wikimedia Commons (archivo Burzagli) (CC BY-SA 3.0),"MHNAN GOAFIALIH
+PERÚ
+2
+1888
+La Sociedad Geografiva
+de
+Lima
+cuyo Consejo Directivo
+ha elegido miembro de la Institucion al
+Sr. [PERSONA_04],
+Leconfere l presente Diploma
+de Socio Corresponsal
+Lima, 15 de agosto de 1921
+M. Meliton
+Carrapal
+Presidente
+Aceptado en sesion del
+deifion to. Alona
+13 del presente mes
+Inscrito à hojas32del
+Lecretario
+libro de socios
+LiE P. BERRIO Y Co",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Diploma de la Sociedad Geográfica de Lima (1921), caligrafía y llenado a mano",True,23,377,0.946
+doc_025,datos/raw/documentos/doc_025.jpg,manuscrito,Wikimedia Commons (archivo Burzagli) (CC BY-SA 3.0),"Augusto B. Loguia
+PRESIDENTE CONSTITUCIONAL del PERÚ
+Pant:donhh
+á la Medalla del Centenario, creada por decreto supremo de 23 de Abril del
+corriente ano, con el fin de conmemorar el primer Centenario de la proclamación
+de la Independencia Nacional le otorga el presente diploma; debiendo refiendarlo
+el Ministro de Estado en el Despacho de Relaciones Exteriores.
+Dado en la casa de Gobierno en Lima, á los veintiocho dias del mes de Julio
+del ano de mil novecientos veintiuno.
+Whegunt
+a.Jalornon
+Este testimonio dá derecho á usar en el ojal ixguierdo, como simbolo de la medalla otorgada, una cinta con los colores nacionales
+LIT. Y TIR P. BERRIO Y CP, LIMA.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Diploma de la Medalla del Centenario (1921), caligrafía y llenado a mano",True,13,658,0.971
