@@ -175,10 +175,11 @@ debe sortearse el Delegado al Jurado
 Departamental de Elecciones.
 Fueron nominados los siguientes ciu-
 dadanos:
-Don [PERSONA_01].
-[PERSONA_03]
-[PERSONA_02] [PERSONA_05].
-Lima 9 de marzo de 1945.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,El Comercio (1945): «Se instaló el Jurado Provincial de Elecciones de Lima»,True,26,765,0.996
+Don Fernando Elguera Diez Canseco.
+Manuel Forero Nugent
+Manuel E. Morales Soyer y
+Manuel Yábar Dávila.
+Lima 9 de marzo de 1945.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,El Comercio (1945): «Se instaló el Jurado Provincial de Elecciones de Lima»,True,26,810,0.996
 doc_007,datos/raw/documentos/doc_007.jpg,impreso,"El Comercio, Lima, 1945 (captura propia) (dominio público en el Perú)","EL COMERCIO.-LIMA. JUEVES  DE MARZO DE 13A
 CANDIDATURA A LA PRESIDENCÍA DE LA REPUBLICA
 DEL
@@ -214,9 +215,9 @@ En cumplimiento de los arts. 16º y 17º del Estatuto Electoral se procedió
 a designar a los cuatro ciudadanos en ejercicio, entre los cuales debe sortear-
 se el Delegado al Jurado Departamental de Elecciones.
 Fueron nominados los siguientes ciudadanos:
-Don [PERSONA_01], Don [PERSONA_03], Don
-[PERSONA_02] y [PERSONA_05].
-Lima, 9 de marzo de 1945.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,La Crónica (1945): «Instalóse en el Senado el Jurado Provincial de Elecciones de Lima»,True,15,768,0.995
+Don Fernando Elguera Diez Canseco, Don Manuel Forero Nugent, Don
+Manuel E. Morales Soyer y Don Manuel Yábar Dávila.
+Lima, 9 de marzo de 1945.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,La Crónica (1945): «Instalóse en el Senado el Jurado Provincial de Elecciones de Lima»,True,15,815,0.995
 doc_009,datos/raw/documentos/doc_009.jpg,foto,"Bloque Antifascista Peruano, 1945 (foto propia) (uso académico, imagen no publicable)","04,2493
 UNIVERSIDAD CVTOLIGA DEL PERU
 BIBLIOTECA
@@ -387,7 +388,7 @@ AGRADECIMIENTO DELOS ESTI-
 BADORES DEL CABOTAJE MENOR
 Una comisión. de la Sociedad ""U-
 nión Estivadóres del Cabotaje Menor""
-presidida por el señor [PERSONA_06]
+presidida por el señor [PERSONA_01]
 Viaje a la Conferencia Bidistrital de Arequipa
 va, se constituyó ayer en Palacio de
 Góbierno con el objeto de hacer lle-
@@ -421,14 +422,14 @@ Todos los edificios tienen cimentación
 los siguientes ciudadanos:
 profunda, estructura de cemento ar-
 mado y albañilería de ladrillo. En al-
-[PERSONA_01], Fernando
+Elguera Diez Canseco, Fernando
 gunas zonas las condiciones del subsue-
 Forero Nugent, Manue!
 lo han hecho necesarias cimentaciones
 especiales con pilotaje de concreto.En
-[PERSONA_02], Manuel E
+Morales Soyer, Manuel E
 los hangares, cuyo techo es aboveda-
-[PERSONA_05], Manuel.
+Yábar Dávila, Manuel.
 do, de concreto armado, del tipo ""cás-
 Lima, 9 de Marzo de 1945.
 cara"", de seis centímetros de espesor,
@@ -464,7 +465,7 @@ Lima, 5 de Marzo de 1945.
 Puerto de Chimbote y la Estación de
 Huallanea,
 que quedó interrumpido
-(PASA A LA PAG. 14)",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"La Crónica (1945): informes de los ministros y avisos, columna curvada",True,134,4235,0.993
+(PASA A LA PAG. 14)",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"La Crónica (1945): informes de los ministros y avisos, columna curvada",True,134,4244,0.993
 doc_016,datos/raw/documentos/doc_016.jpg,foto,"El Comercio, Lima, 1939 (foto propia) (dominio público en el Perú)","L manieacdyela
 Plaza de Acho
 de la República, pro-
@@ -741,13 +742,13 @@ Los Agentes de Policía y de la fuerza
 1921
 pública permitirán circular libremente la per-
 sona y el carruaje del
-eirr Capitan di mavis [PERSONA_04]-
-[PERSONA_04] Covandante dul traee Libia
+eirr Capitan di mavis Ernest Bur-
+zagli Covandante dul traee Libia
 Wiembro de la Emba fral Ifaliana
 y cortar filas si no hay impedimento de fuerza mayor.
 El Prefecto de Lima
 oonve
-Esta tarjeta es intranalerible",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Tarjeta de circulación de la Policía de Lima (1921), llenada a mano",True,13,371,0.991
+Esta tarjeta es intranalerible",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Tarjeta de circulación de la Policía de Lima (1921), llenada a mano",True,13,362,0.991
 doc_024,datos/raw/documentos/doc_024.jpg,manuscrito,Wikimedia Commons (archivo Burzagli) (CC BY-SA 3.0),"MHNAN GOAFIALIH
 PERÚ
 2
@@ -757,7 +758,7 @@ de
 Lima
 cuyo Consejo Directivo
 ha elegido miembro de la Institucion al
-Sr. [PERSONA_04],
+Sr. Capilan de Navio Ernesto Burzagli,
 Leconfere l presente Diploma
 de Socio Corresponsal
 Lima, 15 de agosto de 1921
@@ -770,7 +771,7 @@ deifion to. Alona
 Inscrito à hojas32del
 Lecretario
 libro de socios
-LiE P. BERRIO Y Co",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Diploma de la Sociedad Geográfica de Lima (1921), caligrafía y llenado a mano",True,23,377,0.946
+LiE P. BERRIO Y Co",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Diploma de la Sociedad Geográfica de Lima (1921), caligrafía y llenado a mano",True,23,398,0.946
 doc_025,datos/raw/documentos/doc_025.jpg,manuscrito,Wikimedia Commons (archivo Burzagli) (CC BY-SA 3.0),"Augusto B. Loguia
 PRESIDENTE CONSTITUCIONAL del PERÚ
 Pant:donhh
