@@ -4,7 +4,8 @@ Las configuraciones se fijaron antes de tener las transcripciones de referencia 
 después de ver las métricas.
 
 Documentos
-- paddleocr_base: PaddleOCR 3.7 · PP-OCRv6 sin pasos previos (la salida de la Parte 1).
+- paddleocr_base: PaddleOCR 3.7 · PP-OCRv6 sin pasos previos (la configuración de la Parte 1,
+  vuelta a correr aquí para medir todos los tiempos en las mismas condiciones).
 - paddleocr_preproc: el mismo modelo con los tres pasos previos de PaddleOCR activados
   (orientación de página, desdoblado UVDoc y orientación de cada línea).
 - easyocr: EasyOCR 1.7 (detector CRAFT + reconocedor latino) con idioma español; otra familia de OCR.
@@ -63,6 +64,9 @@ def _leer(archivo: Path) -> dict | None:
 
 # ───────────────────────────────────────────────────────── OCR
 def _crear_ocr(modelo: str):
+    if modelo == "paddleocr_base":
+        from procesar_documentos import crear_ocr
+        return crear_ocr()
     if modelo == "paddleocr_preproc":
         from paddleocr import PaddleOCR
         return PaddleOCR(device="cpu", enable_mkldnn=False, cpu_threads=HILOS, use_doc_orientation_classify=True,
@@ -76,7 +80,7 @@ def _crear_ocr(modelo: str):
 
 
 def _leer_imagen(lector, modelo: str, ruta: Path) -> list[str]:
-    if modelo == "paddleocr_preproc":
+    if modelo.startswith("paddleocr"):
         return list(lector.predict(str(ruta))[0]["rec_texts"])
     if modelo == "easyocr":
         # detail=1: (caja, texto, confianza); se ordena de arriba abajo y de izquierda a derecha
@@ -90,9 +94,6 @@ def ocr(modelo: str, doc_id: str, lector=None) -> dict:
     archivo = CACHE / f"ocr_{modelo}" / f"{doc_id}.json"
     if (hecho := _leer(archivo)) is not None:
         return hecho
-    if modelo == "paddleocr_base":  # la salida de la Parte 1
-        base = json.loads((DOCS / "ocr" / f"{doc_id}.json").read_text(encoding="utf-8"))
-        return {"id": doc_id, "modelo": modelo, "texto": "\n".join(l["texto"] for l in base["lineas"]), "segundos": base["segundos"]}
     t0 = time.perf_counter()
     lineas = _leer_imagen(lector, modelo, DOCS / f"{doc_id}.jpg")
     return _guardar(archivo, {"id": doc_id, "modelo": modelo, "texto": "\n".join(lineas),
@@ -133,6 +134,16 @@ def asr(modelo: str, clip_id: str, transcriptor=None) -> dict:
                               "duracion_seg": round(duracion, 1), "factor_tiempo_real": round(segundos / duracion, 3)})
 
 
+def _calentar(modelo: str, transcriptor):
+    """Primera pasada que no se cronometra (como en la clase): incluye la inicialización del modelo."""
+    from voz import SR, cargar_audio
+    audio = cargar_audio(WAV / "clip_002.wav")[:15 * SR]  # clip fuera de la muestra de evaluación
+    if modelo.startswith("fw_"):
+        list(transcriptor.transcribe(audio, language="es", beam_size=5, vad_filter=True)[0])
+    else:
+        transcriptor.segmentos(audio, idioma="es")
+
+
 def correr(modalidad: str):
     if modalidad == "asr":
         for modelo in MODELOS_ASR:
@@ -142,16 +153,18 @@ def correr(modalidad: str):
             t0 = time.perf_counter()
             transcriptor = _crear_asr(modelo)
             print(f"{modelo}: modelo cargado en {time.perf_counter() - t0:.0f} s", flush=True)
+            _calentar(modelo, transcriptor)
             for c in pendientes:
                 r = asr(modelo, c, transcriptor)
                 print(f"  {c}: factor de tiempo real {r['factor_tiempo_real']:.2f} · {r['texto'][:70]}", flush=True)
             del transcriptor
     else:
-        for modelo in [m for m in MODELOS_OCR if m != "paddleocr_base"]:
+        for modelo in MODELOS_OCR:
             pendientes = [d for d in MUESTRA_DOCS if not (CACHE / f"ocr_{modelo}" / f"{d}.json").exists()]
             if not pendientes:
                 continue
             lector = _crear_ocr(modelo)
+            _leer_imagen(lector, modelo, DOCS / "doc_003.jpg")  # calentamiento, fuera de la muestra
             for d in pendientes:
                 r = ocr(modelo, d, lector)
                 print(f"  {modelo} {d}: {r['segundos']:.1f} s · {r['texto'][:70]!r}", flush=True)

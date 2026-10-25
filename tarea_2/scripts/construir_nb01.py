@@ -79,6 +79,13 @@ import voz
 from fuentes_documentos import CARPETA as DOCS, FUENTES_PROPIAS
 
 # Los gráficos de Plotly se guardan también como PNG para que se vean en GitHub
+import logging
+logging.getLogger().setLevel(logging.ERROR)              # sin registros INFO de httpx, kaleido o paddlex
+for nombre in list(logging.root.manager.loggerDict):
+    logging.getLogger(nombre).setLevel(logging.ERROR)
+transformers.logging.set_verbosity_error()
+transformers.logging.disable_progress_bar()
+
 pio.renderers.default = "plotly_mimetype+png"
 pio.renderers["png"].width, pio.renderers["png"].height = 950, 500
 pd.set_option("display.max_colwidth", 90)
@@ -326,11 +333,13 @@ md("""
 
 Aun con el VAD, en los cierres musicales de algunos noticieros Whisper escribió **«¡Gracias!»**. Es la
 misma alucinación que vimos en la sesión 13: el modelo aprendió de subtítulos de YouTube y la escribe
-cuando oye música o aplausos. La revisión manual de las transcripciones encontró además una frase
-repetida dos veces seguidas.
+cuando oye música o aplausos. La revisión manual de las transcripciones encontró además, en el cierre
+musical de la Semana Santa en Ayacucho (clip_025), una frase del narrador **repetida** sobre 30 segundos
+de música: el VAD confirma que en ese tramo no hay voz.
 
 Regla de limpieza, definida antes de calcular métricas: se elimina un segmento si su texto normalizado
-está en la lista de alucinaciones conocidas de Whisper, o si repite literalmente al segmento anterior.
+está en la lista de alucinaciones conocidas de Whisper, o si repite literalmente un segmento anterior
+del mismo clip.
 """),
 code("""
 ALUCINACIONES = {"gracias", "muchas gracias", "gracias por ver el video", "suscríbete",
@@ -338,16 +347,16 @@ ALUCINACIONES = {"gracias", "muchas gracias", "gracias por ver el video", "suscr
 
 eliminados = []
 for clip_id, r in resultados.items():
-    limpios, anterior = [], None
+    limpios, vistos = [], set()
     for s in r["segmentos"]:
         normal = voz.normalizar(s["texto"])
         if normal in ALUCINACIONES:
             eliminados.append({"id": clip_id, "inicio": s["inicio"], "texto": s["texto"], "motivo": "alucinación conocida de Whisper"})
-        elif normal == anterior:
-            eliminados.append({"id": clip_id, "inicio": s["inicio"], "texto": s["texto"], "motivo": "repetición literal del segmento anterior"})
+        elif normal in vistos:
+            eliminados.append({"id": clip_id, "inicio": s["inicio"], "texto": s["texto"], "motivo": "repite literalmente un segmento anterior"})
         else:
-            limpios.append(s)
-        anterior = normal
+            limpios.append(dict(s))
+        vistos.add(normal)
     r["segmentos_limpios"] = limpios
 
 eliminados = pd.DataFrame(eliminados)
@@ -378,11 +387,55 @@ code("""
 print(voz.a_texto([voz.Segmento(**s) for s in diarizado_027["segmentos"]])[:2500])
 """),
 md("@@INTERPRETACION_DIARIZACION@@"),
+md("""
+### 4.3 Falsos hablantes: cuando la «voz» es música
+
+En clip_004 (desfile militar, 1945) la diarización encontró un segundo hablante, pero su único segmento,
+«Sin olvidar…», dura 16 s según Whisper y el VAD solo encuentra **0,7 s de voz** dentro: es el narrador
+cortado al final del rollo, sobre la marcha militar. La huella de voz de ese segmento es, sobre todo,
+la de la música.
+
+`voz.diarizar` ya evita que los segmentos de menos de 1 s voten al agrupar. Aplicamos la misma idea
+con la voz real: un «hablante» cuya voz, medida con el VAD, suma menos de 2 s no se cuenta como
+hablante, y sus segmentos pasan al hablante principal del clip.
+"""),
+code("""
+def voz_real(audio, inicio, fin):
+    \"\"\"Segundos con voz, según el VAD, dentro de un segmento.\"\"\"
+    x = audio[int(inicio * voz.SR):int(fin * voz.SR)]
+    return sum(b - a for a, b in voz.tramos_de_voz(x)) if len(x) > voz.SR // 2 else 0.0
+
+
+fusionados = []
+for clip_id, r in resultados.items():
+    hablantes = {s["hablante"] for s in r["segmentos_limpios"]}
+    if clip_id == "clip_027" or len(hablantes) < 2:
+        continue
+    audio = voz.cargar_audio(AUDIO / "wav" / f"{clip_id}.wav")
+    principal = max(hablantes, key=lambda h: sum(s["fin"] - s["inicio"] for s in r["segmentos_limpios"] if s["hablante"] == h))
+    for h in sorted(hablantes - {principal}):
+        segmentos_h = [s for s in r["segmentos_limpios"] if s["hablante"] == h]
+        segundos = sum(voz_real(audio, s["inicio"], s["fin"]) for s in segmentos_h)
+        if segundos < 2:
+            for s in segmentos_h:
+                s["hablante"] = principal
+            fusionados.append({"id": clip_id, "hablante": h, "segmentos": len(segmentos_h), "segundos_segun_whisper":
+                               round(sum(s["fin"] - s["inicio"] for s in segmentos_h), 1), "voz_real_vad": round(segundos, 1),
+                               "texto": " ".join(s["texto"] for s in segmentos_h)})
+pd.DataFrame(fusionados)
+"""),
 code("""
 # El clip_027 usa la segunda pasada; los demás, los segmentos de faster-whisper ya limpios
 for clip_id, r in resultados.items():
     if clip_id == "clip_027":
-        r["segmentos_limpios"] = [s for s in diarizado_027["segmentos"] if voz.normalizar(s["texto"]) not in ALUCINACIONES]
+        quedan = [dict(s) for s in diarizado_027["segmentos"] if voz.normalizar(s["texto"]) not in ALUCINACIONES]
+        # tras quitar las alucinaciones, los hablantes se renumeran por orden de aparición
+        orden = {h: f"H{i}" for i, h in enumerate(dict.fromkeys(s["hablante"] for s in quedan), start=1)}
+        for s in quedan:
+            s["hablante"] = orden[s["hablante"]]
+        r["segmentos_limpios"] = quedan
+        quitados = [s["texto"] for s in diarizado_027["segmentos"] if voz.normalizar(s["texto"]) in ALUCINACIONES]
+        print(f"clip_027, segunda pasada: {len(quitados)} alucinaciones eliminadas {quitados} · hablantes que quedan: {sorted(set(orden.values()))}")
     segmentos = [voz.Segmento(**s) for s in r["segmentos_limpios"]]
     base = pa.SALIDAS / f"{clip_id}_limpio"
     voz.a_tabla(segmentos).to_csv(base.with_suffix(".csv"), index=False)
@@ -393,7 +446,7 @@ print("Exportados por clip (CSV, SRT y TXT):", len(list(pa.SALIDAS.glob("*_limpi
 print((pa.SALIDAS / "clip_027_limpio.srt").read_text(encoding="utf-8")[:600])
 """),
 md("""
-### 4.3 ¿Hay audios sin voz?
+### 4.4 ¿Hay audios sin voz?
 
 Regla: un clip se descarta si el VAD encuentra menos de 5 segundos de voz o si, después de la limpieza,
 no queda ningún segmento con texto.
@@ -460,9 +513,64 @@ md("""
 
 Tres preguntas con un gráfico cada una. El título de cada gráfico es la respuesta.
 """),
-code("@@EDA_1@@"),
-code("@@EDA_2@@"),
-code("@@EDA_3@@"),
+code("""
+# 6.1 ¿Cómo se reparte el corpus por tipo y dónde se concentran las lecturas dudosas?
+lineas = pd.concat([lecturas[i].assign(id=i) for i in catalogo["id"]], ignore_index=True)
+lineas["tipo"] = lineas["id"].map(catalogo.set_index("id")["tipo"])
+lineas["confianza del OCR"] = pd.cut(lineas["confianza"], [-1, 0.70, 0.90, 1.01],
+                                     labels=["baja (< 0.70)", "media (0.70-0.90)", "alta (≥ 0.90)"])
+docs_por_tipo = catalogo["tipo"].value_counts()
+conteo = lineas.groupby(["tipo", "confianza del OCR"], observed=False).size().reset_index(name="líneas")
+conteo["tipo"] = conteo["tipo"].map(lambda t: f"{t} ({docs_por_tipo[t]} documentos)")
+pct_manuscritos = 100 * (lineas.loc[lineas["confianza"] < 0.90, "tipo"] == "manuscrito").mean()
+
+fig = px.bar(conteo, x="tipo", y="líneas", color="confianza del OCR",
+             color_discrete_map={"baja (< 0.70)": "#d03b3b", "media (0.70-0.90)": "#fab219", "alta (≥ 0.90)": "#0ca30c"},
+             category_orders={"tipo": [f"{t} ({docs_por_tipo[t]} documentos)" for t in ["impreso", "foto", "manuscrito"]]},
+             title=f"Los manuscritos son {docs_por_tipo['manuscrito']} de {len(catalogo)} documentos, "
+                   f"pero concentran el {pct_manuscritos:.0f} % de las líneas leídas con duda",
+             labels={"tipo": ""})
+fig.update_layout(legend_title_text="Confianza del OCR por línea")
+fig.show()
+"""),
+code("""
+# 6.2 ¿Cuántos minutos aporta cada fuente y cuánto de eso es voz?
+por_fuente = (clips.assign(**{"minutos de audio": clips["duracion_seg"] / 60, "minutos con voz": clips["segundos_voz"] / 60})
+              .groupby("productora", as_index=False)[["minutos de audio", "minutos con voz"]].sum()
+              .sort_values("minutos de audio"))
+largo = por_fuente.melt(id_vars="productora", var_name="medida", value_name="minutos")
+lider = por_fuente.iloc[-1]
+pct_voz = 100 * clips["segundos_voz"].sum() / clips["duracion_seg"].sum()
+
+fig = px.bar(largo, y="productora", x="minutos", color="medida", barmode="group", orientation="h", text_auto=".1f",
+             color_discrete_map={"minutos de audio": "#c3c2b7", "minutos con voz": "#2a78d6"},
+             title=f"{lider['productora']} aporta {lider['minutos de audio']:.0f} de los {clips['duracion_seg'].sum() / 60:.0f} minutos, "
+                   f"y en todo el corpus<br>solo el {pct_voz:.0f} % del tiempo es voz: el resto es música y sonido ambiente",
+             labels={"productora": ""})
+fig.update_layout(legend_title_text=None)
+fig.show()
+"""),
+code("""
+# 6.3 ¿Qué tan largos son los textos extraídos?
+longitudes = pd.concat([
+    pd.DataFrame({"medida": "documentos: caracteres del OCR", "valor": catalogo["texto_ocr"].str.len(), "tipo": catalogo["tipo"]}),
+    pd.DataFrame({"medida": "clips: palabras del ASR", "valor": clips["texto_asr"].map(lambda t: len(re.sub(r"\[HABLANTE_\d+\]", " ", t).split())), "tipo": "audio"}),
+], ignore_index=True)
+med_c = longitudes.loc[longitudes["medida"].str.startswith("documentos"), "valor"].median()
+med_p = longitudes.loc[longitudes["medida"].str.startswith("clips"), "valor"].median()
+
+fig = px.histogram(longitudes, x="valor", color="tipo", facet_col="medida",
+                   color_discrete_map={**COLORES, "audio": "#2a9d8f"},
+                   title=f"Textos breves: la mitad de los documentos tiene menos de {med_c:.0f} caracteres<br>"
+                         f"y la mitad de los clips, menos de {med_p:.0f} palabras",
+                   labels={"valor": "longitud", "tipo": ""})
+# intervalos propios en cada panel: 250 caracteres para el OCR y 50 palabras para el ASR
+fig.for_each_trace(lambda t: t.update(bingroup=None, xbins=dict(start=0, size=50 if t.name == "audio" else 250)))
+fig.update_xaxes(matches=None, title_text="longitud")
+fig.update_yaxes(title_text="registros", col=1)
+fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
+fig.show()
+"""),
 md("@@INTERPRETACION_EDA@@"),
 md("""
 ## 7. Validación: los extremos tienen que ser coherentes con los histogramas
@@ -568,6 +676,12 @@ md("""
 """),
 ]
 
+import json
+
+TEXTOS = json.loads((RAIZ / "scripts" / "textos_nb01.json").read_text(encoding="utf-8")) if (RAIZ / "scripts" / "textos_nb01.json").exists() else {}
 nb = notebook(celdas)
+for celda in nb.cells:
+    for clave, valor in TEXTOS.items():
+        celda.source = celda.source.replace(clave, valor)
 nbformat.write(nb, RAIZ / "01_extraccion.ipynb")
 print("ok:", RAIZ / "01_extraccion.ipynb", len(nb.cells), "celdas")
