@@ -73,7 +73,8 @@ pd.set_option("display.max_colwidth", 110)
 DATOS = Path("datos")
 documentos = pd.read_csv(DATOS / "documentos.csv", dtype={"texto_referencia": str})
 transcripciones = pd.read_csv(DATOS / "transcripciones.csv", dtype={"texto_referencia": str})
-print(f"jiwer {jiwer.__version__} · documentos {documentos.shape} · transcripciones {transcripciones.shape}")
+from importlib.metadata import version
+print(f"jiwer {version('jiwer')} · documentos {documentos.shape} · transcripciones {transcripciones.shape}")
 """),
 md("""
 ## 1. Muestra de evaluación (sin datos nuevos)
@@ -325,7 +326,7 @@ temas = pd.Series([json.loads(j).get("tema") for j in extraccion.loc[extraccion[
 nulos = {k: np.mean([json.loads(j).get(k) is None for j in extraccion.loc[(extraccion["json_valido"]) & (extraccion["modalidad"] == "documento"), "campos_json"]])
          for k in ["emisor", "destinatario", "fecha", "lugar", "monto"]}
 print("Temas asignados:", temas.to_dict())
-print("Fracción de documentos con null:", {k: round(v, 2) for k, v in nulos.items()})
+print("Fracción de documentos con null:", {k: round(float(v), 2) for k, v in nulos.items()})
 """),
 md("""
 ### 6.1 Auditoría humana de 20 extracciones

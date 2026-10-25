@@ -2,11 +2,26 @@
 
 > **Pregunta del proyecto:** ¿Pueden convertir documentos escaneados y entrevistas en audio en un archivo de texto estructurado y buscable?
 
-**Dashboard público:** @@URL_APP@@
+**Dashboard público:** https://voces-documentos-peru.streamlit.app/
 
-**Respuesta corta:** @@RESPUESTA_CORTA@@
+**Respuesta corta:** sí para la prensa impresa y los noticieros narrados, todavía no para la letra manuscrita.
+Todo corrió en una laptop sin GPU:
 
-@@TABLA_RESULTADOS@@
+- **Prensa impresa y fotografiada:** PaddleOCR deja el texto casi limpio (CER promedio de 0,01 en fotos y
+  0,08 en impresos).
+- **Noticieros:** faster-whisper *turbo* transcribe la narración con 4 errores cada 100 palabras (WER 0,04).
+  Ese texto ya es buscable.
+- **Manuscritos:** conservan un 38 % de error por carácter, con cualquiera de los tres modelos de OCR.
+- **Extracción con un LLM local de 1,7B:** acierta todos los campos en 8 de 20 casos auditados. Sirve como
+  borrador de catalogación, no como catálogo final.
+
+| Etapa (muestra con referencia manual) | Línea base | Modelo elegido | Resultado |
+|---|---|---|---|
+| OCR · 10 documentos | PaddleOCR PP-OCRv6: CER 0,191 | el mismo: las dos alternativas tienen más error | **CER 0,19** (promedio por tipo: foto 0,01 · impreso 0,08 · manuscrito 0,38) |
+| ASR · 10 clips | faster-whisper *small*: WER 0,111 | faster-whisper *large-v3-turbo* | **WER 0,04**, factor de tiempo real de 0,66 en CPU |
+| Extracción JSON · 20 casos auditados | — | Qwen3-1.7B local | **8/20** extracciones completamente correctas; 83 % de los campos correctos |
+
+`Resultados Test: WER: 0.04 | CER: 0.19 | Acuerdo LLM-Humano: 8/20`
 
 ---
 
@@ -45,10 +60,24 @@ los vuelve a bajar (User-Agent descriptivo, pausas de 1 a 2 s).
 Criterio: se **conservan** las figuras públicas en su rol público (presidentes, ministros, candidatos,
 autoridades, escritores y personajes históricos) y se **reemplazan** los particulares por `[PERSONA_nn]`.
 Un modelo NER en español propuso las personas, el estudiante revisó cada nombre y `voz.seudonimizar` hizo
-el reemplazo, también sobre nombres mal escritos por el OCR. Resultado: **@@N_REEMPLAZOS@@ entidades
-reemplazadas** (6 particulares: cuatro ciudadanos sorteados para el Jurado Provincial de 1945, un
-particular de una delegación y el titular de los documentos personales de 1921). La tabla con los nombres
-reales queda fuera de Git (`datos/privado/`). Ningún texto contiene DNI, direcciones ni teléfonos.
+el reemplazo, también sobre nombres mal escritos por el OCR.
+
+**Resultado: 1 entidad reemplazada.** El NER propuso 106 nombres:
+
+- **79 figuras públicas**, que se conservan;
+- **26 descartados**, porque no eran nombres de persona (cargos, lugares o ruido del OCR);
+- **1 particular**: quien preside una delegación en un informe de *La Crónica* (doc_015). En la imagen
+  publicada de ese documento, su nombre está tapado con un rectángulo negro.
+
+Por decisión del estudiante también se conservan dos casos dudosos:
+
+- los cuatro ciudadanos que integran el Jurado Provincial de Elecciones de Lima en 1945, por su función
+  electoral en un comunicado oficial;
+- el comandante Ernesto Burzagli, por su rol diplomático y militar oficial en el Centenario de 1921.
+
+La tabla con los nombres reales queda fuera de Git (`datos/privado/`). Ningún texto contiene DNI, teléfonos
+ni direcciones personales. La única dirección del corpus es la de un local de propaganda electoral de 1945
+(doc_007).
 
 ---
 
@@ -65,11 +94,48 @@ reales queda fuera de Git (`datos/privado/`). Ningún texto contiene DNI, direcc
 
 ## Hallazgos analíticos
 
-@@HALLAZGOS@@
+1. **El soporte pesa más que el modelo, y el error se arrastra hasta el LLM.**
+   - Con el mismo PaddleOCR, el CER promedio es 0,01 en las fotos de 1945, 0,08 en los impresos y 0,38 en
+     los manuscritos de 1912 a 1921. Ninguna de las alternativas baja de 0,38 con la letra a mano: ni el
+     preprocesamiento de la página ni EasyOCR.
+   - En los impresos el error no viene de leer mal sino de no detectar. En doc_001 el detector omitió la
+     primera línea, y eso explica la mayor parte de su CER de 0,23: cuando el preprocesamiento la recupera,
+     baja a 0,09.
+   - El LLM no corrige estos errores, los disimula. Ninguno de los 4 manuscritos auditados quedó bien
+     extraído: ante un texto ilegible el modelo escribe un resumen coherente y llena los campos con
+     fragmentos sin sentido. En las páginas a varias columnas, el desorden de líneas del OCR se convirtió en
+     fechas y lugares equivocados.
+2. **En audio, el tamaño del modelo pesa más que la familia, y la música es el ruido que más complica.**
+   - Whisper *large-v3-turbo* comete 2,5 veces menos errores que *small* (WER 0,04 frente a 0,11). Sigue
+     siendo más rápido que el tiempo real en CPU.
+   - Qwen3-ASR, del tamaño de *small*, apenas lo mejora (0,10).
+   - El peor clip para turbo es el que tiene más tiempo sin voz, casi todo música (clip_024: 62 % del clip).
+   - Whisper alucinó frases que nadie dice: «¡Gracias!», «¡Suscríbete!» y una oración repetida. Pasó sobre
+     todo en tramos de música o aplausos. El filtro eliminó 6 segmentos en 5 clips y otros 4 en el discurso
+     de 1945 (clip_027).
+   - La diarización contó como segundo hablante un segmento que era casi todo marcha militar (clip_004:
+     0,9 s de voz real en 16 s).
+   - Para un archivo buscable, por tanto, no basta con el ASR: hacen falta el VAD y los filtros de
+     alucinaciones y de falsos hablantes.
 
 ## Limitaciones técnicas
 
-@@LIMITACIONES@@
+1. **Solo CPU.** Todo corrió en una laptop sin GPU, y eso condicionó las elecciones:
+   - PaddleOCR tardó unos 2 minutos por página (mediana de 130 s en el corpus).
+   - El LLM tardó 2,6 minutos por registro (148 min en total). Por eso se usó un modelo pequeño (Qwen3-1.7B)
+     y se recortó la entrada a 2500 caracteres, lo que dejó fuera parte del texto de 2 documentos y 6 clips.
+   - No se probaron modelos de visión-lenguaje para los manuscritos ni LLM más grandes, que con GPU podrían
+     reducir los errores de rol y de resumen.
+2. **Muestra pequeña y una sola persona.**
+   - Las métricas salen de 10 documentos y 10 clips, y la auditoría del LLM, de 20 casos. Una sola persona
+     escribió las referencias y auditó: no hay acuerdo entre anotadores.
+   - Hay indicios de errores en la propia referencia. En clip_024, los tres modelos coinciden entre sí y no
+     con ella. No se corrigió después de ver los resultados.
+   - El CER también castiga el orden de lectura. En las páginas a varias columnas o con texto superpuesto,
+     una línea bien leída pero fuera de lugar cuenta como error.
+   - El criterio para valores copiados con errores de reconocimiento («Loguia» por Leguía) no se aplicó
+     igual en todos los casos. Sin embargo, el 8/20 no cambia, porque esos casos tienen además otros campos
+     incorrectos.
 
 ---
 
@@ -96,12 +162,14 @@ uv run python procesar_documentos.py           # prepara las 25 imágenes y corr
 uv run python procesar_audio.py                # VAD + faster-whisper + diarización (~1 h en CPU)
 uv run jupyter nbconvert --to notebook --execute --inplace 01_extraccion.ipynb
 uv run python evaluacion.py asr && uv run python evaluacion.py ocr
-uv run python scripts/correr_llm.py            # Qwen3-1.7B en CPU (~1 h)
+uv run python scripts/correr_llm.py            # Qwen3-1.7B en CPU (~2,5 h)
 uv run jupyter nbconvert --to notebook --execute --inplace 02_evaluacion.ipynb
+uv run python scripts/preparar_ejemplos.py     # imágenes (con particulares tapados) y OGG para la app
 ```
 
 Las capturas propias de prensa (PDF) no se publican: `procesar_documentos.py` las busca en la ruta local
-indicada en `fuentes_documentos.FUENTES_PROPIAS`. Las transcripciones manuales de referencia y la
+indicada en `fuentes_documentos.FUENTES_PROPIAS`. Los notebooks también leen la revisión de nombres
+`datos/privado/revision_nombres.csv`, que no se versiona porque contiene los nombres reales. Las transcripciones manuales de referencia y la
 auditoría del LLM se hicieron con las páginas que generan `scripts/kit_transcripcion.py` y
 `scripts/kit_auditoria.py`.
 

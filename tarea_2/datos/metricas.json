@@ -1,0 +1,145 @@
+{
+ "ocr_elegido": "PaddleOCR 3.7 · PP-OCRv6 (configuración base de la clase)",
+ "asr_elegido": "faster-whisper large-v3-turbo (int8, CPU, beam 5, VAD)",
+ "cer_base": 0.19082070992539002,
+ "wer_base": 0.11074197120708748,
+ "cer_elegido": 0.19082070992539002,
+ "wer_elegido": 0.044296788482835,
+ "acuerdo_llm": 8,
+ "tabla_comparativa": [
+  {
+   "modalidad": "documentos",
+   "modelo": "PaddleOCR 3.7 · PP-OCRv6 (configuración base de la clase)",
+   "metrica": "CER",
+   "error agregado": 0.191,
+   "error promedio por caso": 0.179,
+   "segundos por caso": 87.415,
+   "factor de tiempo real": NaN,
+   "rol": "línea base"
+  },
+  {
+   "modalidad": "documentos",
+   "modelo": "PaddleOCR 3.7 · PP-OCRv6 + orientación, desdoblado UVDoc y orientación de líneas",
+   "metrica": "CER",
+   "error agregado": 0.218,
+   "error promedio por caso": 0.235,
+   "segundos por caso": 68.54,
+   "factor de tiempo real": NaN,
+   "rol": "alternativo"
+  },
+  {
+   "modalidad": "documentos",
+   "modelo": "EasyOCR 1.7 · CRAFT + reconocedor latino (es)",
+   "metrica": "CER",
+   "error agregado": 0.409,
+   "error promedio por caso": 0.371,
+   "segundos por caso": 31.45,
+   "factor de tiempo real": NaN,
+   "rol": "alternativo"
+  },
+  {
+   "modalidad": "audio",
+   "modelo": "faster-whisper small (int8, CPU, beam 5, VAD) · línea base",
+   "metrica": "WER",
+   "error agregado": 0.111,
+   "error promedio por caso": 0.113,
+   "segundos por caso": 16.01,
+   "factor de tiempo real": 0.276,
+   "rol": "línea base"
+  },
+  {
+   "modalidad": "audio",
+   "modelo": "faster-whisper large-v3-turbo (int8, CPU, beam 5, VAD)",
+   "metrica": "WER",
+   "error agregado": 0.044,
+   "error promedio por caso": 0.047,
+   "segundos por caso": 40.03,
+   "factor de tiempo real": 0.656,
+   "rol": "alternativo"
+  },
+  {
+   "modalidad": "audio",
+   "modelo": "Qwen3-ASR 0.6B (CPU, float32, tramos VAD de voz.py)",
+   "metrica": "WER",
+   "error agregado": 0.097,
+   "error promedio por caso": 0.11,
+   "segundos por caso": 38.195,
+   "factor de tiempo real": 0.734,
+   "rol": "alternativo"
+  }
+ ],
+ "auditoria_errores": [
+  {
+   "id": "doc_004",
+   "modalidad": "documento",
+   "campos_con_error": "destinatario, fecha",
+   "nota": "Fecha: No es 1931\nLíneas reconocidas del texto están en desorden"
+  },
+  {
+   "id": "doc_016",
+   "modalidad": "documento",
+   "campos_con_error": "lugar",
+   "nota": "Líneas reconocidas del texto están en desorden"
+  },
+  {
+   "id": "doc_019",
+   "modalidad": "documento",
+   "campos_con_error": "resumen",
+   "nota": "Mal reconocimiento de texto"
+  },
+  {
+   "id": "doc_017",
+   "modalidad": "documento",
+   "campos_con_error": "resumen, emisor, destinatario, fecha, lugar",
+   "nota": "Mal reconocimiento de texto"
+  },
+  {
+   "id": "doc_015",
+   "modalidad": "documento",
+   "campos_con_error": "resumen, destinatario, fecha, lugar",
+   "nota": "Líneas reconocidas del texto están en desorden"
+  },
+  {
+   "id": "doc_025",
+   "modalidad": "documento",
+   "campos_con_error": "emisor, destinatario, fecha",
+   "nota": "Resumen: El nombre es Augusto B. Leguía"
+  },
+  {
+   "id": "doc_018",
+   "modalidad": "documento",
+   "campos_con_error": "tema, resumen, emisor, destinatario",
+   "nota": "Mal reconocimiento de texto\nLíneas reconocidas del texto están en desorden"
+  },
+  {
+   "id": "clip_012",
+   "modalidad": "audio",
+   "campos_con_error": "lugar, numero_hablantes",
+   "nota": "lugar: \"paranipo\" no existe como palabra en español\nnumero_hablantes: solo hay un narrador"
+  },
+  {
+   "id": "clip_011",
+   "modalidad": "audio",
+   "campos_con_error": "tema",
+   "nota": "tema: \"migración\", no \"elecciones y partidos\""
+  },
+  {
+   "id": "clip_023",
+   "modalidad": "audio",
+   "campos_con_error": "tema",
+   "nota": "tema: \"sociedad y vida cotidiana\", no \"gobierno y Estado\""
+  },
+  {
+   "id": "clip_004",
+   "modalidad": "audio",
+   "campos_con_error": "lugar",
+   "nota": "lugar: Campo de Marte"
+  },
+  {
+   "id": "clip_015",
+   "modalidad": "audio",
+   "campos_con_error": "numero_hablantes",
+   "nota": "numero_hablantes: solo hay un narrador"
+  }
+ ]
+}

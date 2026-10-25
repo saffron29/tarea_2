@@ -7,7 +7,13 @@ Candidato Nacional a la Presidencia de
 la República, el Domingo 15 de los co-
 rrientes, a las 2 p. m., en la Plaza de Acho.
 La Comisión.
-No. 17986",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,El Comercio (1939): aviso de manifestación cívica en la Plaza de Acho,True,9,204,0.999
+No. 17986",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,"Se invita a la ciudadanía a concurrir a la gran manifestación cívica que se
+tributará a
+Manuel Prado
+Candidato Nacional a la Presidencia de
+la República, el Domingo 15 de los co-
+rrientes, a las 2 p.m., en la Plaza de Acho.
+La Comisión.",El Comercio (1939): aviso de manifestación cívica en la Plaza de Acho,True,9,204,0.999
 doc_002,datos/raw/documentos/doc_002.jpg,impreso,"El Comercio, Lima, 1939 (captura propia) (dominio público en el Perú)","Mensaje del Presidente de la
 República
 De la Oficina de Informaciones del
@@ -20,7 +26,18 @@ con las otras radiodifusoras locales, re-
 trasmitido por las demás Estaciones de
 la República y difundido por todos los
 equipos altoparlantes instalados en el
-país.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,El Comercio (1939): «Mensaje del Presidente de la República»,True,13,421,0.996
+país.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,"Mensaje del Presidente de la República
+De la Oficina de Informaciones del
+Perú se nos comunica lo siguiente:
+El señor Presidente de la República
+leerá su Mensaje mañana sábado, a ho-
+ras 9 de la noche. Será trasmitido por
+Radio Nacional del Perú, en cadena
+con las otras radiodifusoras locales, re-
+trasmitido por las demás Estaciones de
+la República y difundido por todos los
+equipos altoparlantes instalados en el
+país.",El Comercio (1939): «Mensaje del Presidente de la República»,True,13,421,0.996
 doc_003,datos/raw/documentos/doc_003.jpg,impreso,"El Comercio, Lima, 1939 (captura propia) (dominio público en el Perú)","VIVERES PARA EL
 ""AUXILIO SOCIAL""
 E ESPAÑA
@@ -217,7 +234,13 @@ se el Delegado al Jurado Departamental de Elecciones.
 Fueron nominados los siguientes ciudadanos:
 Don Fernando Elguera Diez Canseco, Don Manuel Forero Nugent, Don
 Manuel E. Morales Soyer y Don Manuel Yábar Dávila.
-Lima, 9 de marzo de 1945.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,La Crónica (1945): «Instalóse en el Senado el Jurado Provincial de Elecciones de Lima»,True,15,815,0.995
+Lima, 9 de marzo de 1945.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,"INSTALOSE EN EL SENADO EL JURADO PROVINCIAL DE ELECCIONES DE LIMA
+COMUNICADO OFICIAL
+De conformidad con lo dispuesto en el art. 15° del Estatuto Electoral (Ley N° 8901, se instaló el Jurado Provincial de Elecciones de Lima en su local, situado en los altos del Senado, en el Palacio Legislativo, bajo la presidencia del ingeniero don Felipe González del Riego y actuando como Secretario el Dr. Dn. Carlos Ledgard Jiménez.
+En cumplimiento de los arts. 16º y 17º del Estatuto Electoral se procedió a designar a los cuatro ciudadanos en ejercicio, entre los cuales debe sortearse el Delegado al Jurado Departamental de Elecciones.
+Fueron nominados los siguientes ciudadanos:
+Don Fernando Elguera Diez Canseco, Don Manuel Forero Nugent, Don Manuel E. Morales Soyer y Don Manuel Yábar Dávila.
+Lima, 9 de marzo de 1945.",La Crónica (1945): «Instalóse en el Senado el Jurado Provincial de Elecciones de Lima»,True,15,815,0.995
 doc_009,datos/raw/documentos/doc_009.jpg,foto,"Bloque Antifascista Peruano, 1945 (foto propia) (uso académico, imagen no publicable)","04,2493
 UNIVERSIDAD CVTOLIGA DEL PERU
 BIBLIOTECA
@@ -294,7 +317,17 @@ DE MIEMBROS DE SU PARTIDO, EN LA
 PLAZA SAN MARTIN, EN CELEBRACION
 DEL RECONOCIMIENTO OFICIAL DE LOS
 DERECHOS POLITICOS DEL MISMO
-(20 de Mayo de 1945)",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,«Tres discursos» (1945): portadilla del discurso del jefe del Partido Aprista,False,9,267,0.998
+(20 de Mayo de 1945)",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,"VICTOR RAUL HAYA DE LA TORRE
+JEFE SUPREMO DEL PARTIDO
+DEL PUEBLO (APRISTA) SE DIRIGE 
+A UNA GIGANTESCA MANIFESTACION
+DE MIEMBROS DE SU PARTIDO, EN LA
+PLAZA SAN MARTIN, EN CELEBRACION
+DEL RECONOCIMIENTO OFICIAL DE LOS
+DERECHOS POLITICOS DEL MISMO
+
+(20 de mayo de 1945)
+",«Tres discursos» (1945): portadilla del discurso del jefe del Partido Aprista,False,9,267,0.998
 doc_012,datos/raw/documentos/doc_012.jpg,foto,"Bloque Antifascista Peruano, 1945 (foto propia) (uso académico, imagen no publicable)","ORGE ACOSTA, SECRETARIO GENE-
 RAL DEL PARTIDO VANGUARDIA
 SOCIALISTA DEL PERU (COMUNIS-
@@ -303,7 +336,15 @@ MILITANTES Y SIMPATIZANTES, EN EL
 TEATRO BOLIVAR, CON OPORTUNIDAD DE
 LA INSCRIPCION DEL PARTIDO EN EL
 REGISTRO ELECTORAL
-(8 de Junio de 1945).",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,«Tres discursos» (1945): portadilla del discurso del Partido Vanguardia Socialista,False,9,266,0.999
+(8 de Junio de 1945).",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,"JORGE ACOSTA, SECRETARIO GENERAL 
+DEL PARTIDO VANGUARDIA SOCIALISTA DEL PERÚ (COMUNISTA), 
+SE DIRIGE A DECENAS DE MILES DE 
+MILITANTES Y SIMPATIZANTES, EN EL 
+TEATRO BOLÍVAR, CON OPORTUNIDAD DE 
+LA INSCRIPCIÓN DEL PARTIDO EN EL 
+REGISTRO ELECTORAL.
+
+(8 de Junio de 1945)",«Tres discursos» (1945): portadilla del discurso del Partido Vanguardia Socialista,False,9,266,0.999
 doc_013,datos/raw/documentos/doc_013.jpg,foto,"El Comercio, Lima, 1945 (foto propia) (dominio público en el Perú)","SE DECLARA EL ESTADO DE BELIGERANCIA
 ENTRE EL PERU Y ALEMANIA Y JAPON
 EL 1o. DE ENERO DE 1942
@@ -331,7 +372,17 @@ B. Leguía, fundador del Partido, y en recuerdo de su onomástico; se invita a d
 los miembros de la Junta Central Directiva y a los simpatizantes que deseen asistir.
 El discurso de orden será pronunciado por el señor Dr. Dn. Alvaro de Bracamonte y Orbegosa.
 Lima. 16 de febrere de 1945.
-LOS SECRETARIOS",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,El Comercio (1945): aviso del Partido Democrático Reformista,True,10,528,0.994
+LOS SECRETARIOS",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,"PARTIDO DEMOCRATICO REFORMISTA 
+
+Debiendo celebrarse una sesión solemne, el 19 del corriente, a las 5 y media p. m. en el
+local de la Pileta de La Merced 170, como homenaje de simpatía a la memoria de Don Augusto
+B. Leguía, fundador del Partido, y en recuerdo de su onomástico; se invita a dicha actuación a
+los miembros de la Junta Central Directiva y a los simpatizantes que deseen asistir. 
+
+El discurso de orden será pronunciado por el señor Dr. Dn. Alvaro de Bracamonte y Orbegosa.
+Lima, 16 de febrero de 1945. 
+
+LOS SECRETARIOS",El Comercio (1945): aviso del Partido Democrático Reformista,True,10,528,0.994
 doc_015,datos/raw/documentos/doc_015.jpg,foto,"La Crónica, Lima, 1945 (foto propia) (dominio público en el Perú)","ACTIVIDADES OFICIALES
 CONFERENCIA CON EL MINIS-
 TRO DOCTOR CISNEROS SANCHEZ
@@ -728,14 +779,43 @@ nen"" in gur fui fublicain.
 Hay so fawient, por oo salt, y one
 reiter, he Wt. on afutiimss
 imitralle
-Carta de César Vallejo a José María Eguren.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Carta de César Vallejo a José María Eguren (Trujillo, 1917)",True,22,767,0.676
+Carta de César Vallejo a José María Eguren.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,"Trujillo, 29 de julio 917
+Sr. José María Eguren
+Barranco
+Hondamente conmovido leí su atenta carta, 
+cuyos términos le agradezco de veras. Ella me ha 
+reanimado mucho, en estos días en que me sen-
+tía tan mal; pues aquí hay quienes me atacan 
+con tanta rudeza.....! Mil gracias, señor Eguren; 
+su gentileza y su bondad me han hecho 
+mucho bien; mil gracias.
+En estos días, atento a la indicación de Ud., 
+enviaré a la revista Renacimiento de Guayaquil 
+algunos de mis versos; y Dios quiera que gusten.
+Me permití entregar a la publicidad el conte-
+nido de su citada carta, al reclamo solícito que 
+me hicieron de ella. -Ud. perdone.- Hoy le envío 
+por este mismo vapor un número de ""La Reforma"" 
+en qué fue publicada.
+Hago votos fervientes por su salud, y me 
+reitero de Ud. su afectísimo.
+César Vallejo","Carta de César Vallejo a José María Eguren (Trujillo, 1917)",True,22,767,0.676
 doc_022,datos/raw/documentos/doc_022.jpg,manuscrito,Wikimedia Commons (Leguicall) (dominio público),"Agredvaco mmy sineeraomeals
 Ta dina atonsiln de n foren a-
  mingo Imio Untomin Epginiguren al
 pleegniarme los do foletitos coge le-
 infimith gut, auundh b ad proible, Garo-
 roxia con n oprcita slite aest
-Merafbores, 2bsds Orbibre de/912.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Tarjeta de Ricardo Palma (1912), recorte de la parte manuscrita",True,7,237,0.748
+Merafbores, 2bsds Orbibre de/912.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,"Agradezco muy sinceramente 
+la fina atención de mi joven amigo 
+Luis Antonio Eguiguren al 
+obsequiarme los dos folletitos cuya 
+lectura haré próximamente, y le estimaré 
+infinito que, cuando le sea posible, favorezca 
+con su apreciada visita á este 
+en valetudinario amigo.
+Ricardo Palma
+Miraflores, 24 de Octubre de 1912.","Tarjeta de Ricardo Palma (1912), recorte de la parte manuscrita",True,7,237,0.748
 doc_023,datos/raw/documentos/doc_023.jpg,manuscrito,Wikimedia Commons (archivo Burzagli) (Public Domain Mark),"POLICIA DE LIMA
 TARJETA DE CIRCULACION
 Los Agentes de Policía y de la fuerza
@@ -748,7 +828,17 @@ Wiembro de la Emba fral Ifaliana
 y cortar filas si no hay impedimento de fuerza mayor.
 El Prefecto de Lima
 oonve
-Esta tarjeta es intranalerible",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Tarjeta de circulación de la Policía de Lima (1921), llenada a mano",True,13,362,0.991
+Esta tarjeta es intranalerible",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,"POLICIA DE LIMA
+TARJETA DE CIRCULACION
+1921 
+Los Agentes de Policía y de la fuerza pública permitirán circular libremente la persona y el carruaje del 
+Señor Capitán de Navío Ernesto Burzagli 
+Comandante del Crucero ""Libia"", 
+Miembro de la Embajada Italiana 
+y cortar filas si no hay impedimento de fuerza mayor.
+El Prefecto de Lima
+
+Esta tarjeta es intransferible.","Tarjeta de circulación de la Policía de Lima (1921), llenada a mano",True,13,362,0.991
 doc_024,datos/raw/documentos/doc_024.jpg,manuscrito,Wikimedia Commons (archivo Burzagli) (CC BY-SA 3.0),"MHNAN GOAFIALIH
 PERÚ
 2
@@ -784,4 +874,12 @@ del ano de mil novecientos veintiuno.
 Whegunt
 a.Jalornon
 Este testimonio dá derecho á usar en el ojal ixguierdo, como simbolo de la medalla otorgada, una cinta con los colores nacionales
-LIT. Y TIR P. BERRIO Y CP, LIMA.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,,"Diploma de la Medalla del Centenario (1921), caligrafía y llenado a mano",True,13,658,0.971
+LIT. Y TIR P. BERRIO Y CP, LIMA.",PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado,"Augusto B. Leguía
+PRESIDENTE CONSTITUCIONAL DEL PERÚ
+Por Cuanto: Ernesto Burzagli, comandante del crucero italiano ""Libia"" se ha hecho acreedor
+á la Medalla del Centenario, creada por decreto supremo de 23 de Abril del
+corriente año, con el fin de conmemorar el primer Centenario de la proclamación
+de la Independencia Nacional; le otorga el presente diploma; debiendo refrendarlo
+el Ministro de Estado en el Despacho de Relaciones Exteriores.
+Dado en la casa de Gobierno en Lima, á los veintiocho días del mes de Julio
+del año de mil novecientos veintiuno.","Diploma de la Medalla del Centenario (1921), caligrafía y llenado a mano",True,13,658,0.971
