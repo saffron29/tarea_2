@@ -40,7 +40,13 @@ def muestra(llm: pd.DataFrame) -> pd.DataFrame:
 
 
 def main():
-    llm = pd.read_csv(RAIZ / "datos" / "extraccion_llm.csv")
+    # la misma tabla que publica el notebook 02, armada desde la caché del LLM
+    import extraccion_llm as ex
+    import seudonimos
+    salidas = [json.loads(p.read_text(encoding="utf-8")) for p in sorted(ex.CACHE.glob("*.json"))]
+    reemplazos = seudonimos.tabla_de_reemplazos(pd.read_csv(RAIZ / "datos" / "privado" / "revision_nombres.csv"))
+    llm = ex.tabla_publicable(salidas, reemplazos, pd.Timestamp.now(tz="America/Lima").strftime("%Y-%m-%d"))
+    llm.to_csv(RAIZ / "datos" / "extraccion_llm.csv", index=False)
     textos = {**dict(pd.read_csv(RAIZ / "datos" / "documentos.csv")[["id", "texto_ocr"]].values),
               **dict(pd.read_csv(RAIZ / "datos" / "transcripciones.csv")[["id", "texto_asr"]].values)}
     casos = muestra(llm)

@@ -59,6 +59,13 @@ import voz
 from kit_auditoria import muestra as muestra_auditoria
 from kit_transcripcion import MUESTRA_CLIPS, MUESTRA_DOCS
 
+import logging
+import transformers
+logging.getLogger().setLevel(logging.ERROR)
+for nombre in list(logging.root.manager.loggerDict):
+    logging.getLogger(nombre).setLevel(logging.ERROR)
+transformers.logging.set_verbosity_error()
+
 pio.renderers.default = "plotly_mimetype+png"
 pio.renderers["png"].width, pio.renderers["png"].height = 950, 480
 pd.set_option("display.max_colwidth", 110)
@@ -225,15 +232,23 @@ display(tabla_asr.round(3))
 """),
 code("""
 cer_tipo = eval_docs.groupby(["tipo", "modelo"], as_index=False)["cer"].mean()
-peor = cer_tipo.loc[cer_tipo["cer"].idxmax()]
+base_tipo = cer_tipo[cer_tipo["modelo"] == "paddleocr_base"].set_index("tipo")["cer"]
+mejor_manuscrito = cer_tipo[cer_tipo["tipo"] == "manuscrito"]["cer"].min()
 fig = px.bar(cer_tipo, x="tipo", y="cer", color="modelo", barmode="group", text_auto=".2f",
-             category_orders={"tipo": ["impreso", "foto", "manuscrito"]},
-             title="@@TITULO_CER@@", labels={"cer": "CER promedio", "tipo": ""})
+             category_orders={"tipo": ["impreso", "foto", "manuscrito"], "modelo": list(ev.MODELOS_OCR)},
+             title=f"Con PaddleOCR el CER es {base_tipo['foto']:.2f} en fotos y {base_tipo['impreso']:.2f} en impresos, pero "
+                   f"{base_tipo['manuscrito']:.2f} en manuscritos:<br>ningún modelo baja de {mejor_manuscrito:.2f} con la letra a mano",
+             labels={"cer": "CER promedio", "tipo": ""})
 fig.show()
 """),
 code("""
+agr = tabla_asr.set_index("clave")
 fig = px.scatter(eval_audio, x="factor_tiempo_real", y="wer", color="modelo", hover_data=["id"],
-                 title="@@TITULO_WER@@",
+                 category_orders={"modelo": list(ev.MODELOS_ASR)},
+                 title=f"Whisper turbo comete {agr.loc['fw_small', 'WER agregado'] / agr.loc['fw_turbo', 'WER agregado']:.1f} veces menos errores que small "
+                       f"(WER {agr.loc['fw_turbo', 'WER agregado']:.2f} vs. {agr.loc['fw_small', 'WER agregado']:.2f})<br>a cambio de "
+                       f"{agr.loc['fw_turbo', 'factor de tiempo real'] / agr.loc['fw_small', 'factor de tiempo real']:.1f} veces más tiempo de CPU; "
+                       f"Qwen3-ASR no lo supera en ninguna de las dos cosas",
                  labels={"factor_tiempo_real": "factor de tiempo real (menos es más rápido)", "wer": "WER del clip"})
 fig.show()
 """),
@@ -298,27 +313,9 @@ print(f"Registros: {len(salidas)} · JSON válidos: {salidas['json_valido'].sum(
       f"tiempo mediano {salidas['segundos'].median():.0f} s por registro · total {salidas['segundos'].sum() / 60:.0f} min")
 """),
 code("""
-CLAVES = {"documento": ["modalidad", "tema", "resumen", "emisor", "destinatario", "fecha", "lugar", "monto"],
-          "audio": ["modalidad", "tema", "resumen", "lugar", "fecha", "citas_clave", "numero_hablantes"]}
-
-
-def depurar(campos, modalidad):
-    \"\"\"Se quedan solo las claves del esquema (si el modelo inventó otras, se descartan y se cuentan).\"\"\"
-    if not isinstance(campos, dict):
-        return None, 0
-    extra = [k for k in campos if k not in CLAVES[modalidad]]
-    return {k: campos.get(k) for k in CLAVES[modalidad]}, len(extra)
-
-
 fecha_extraccion = pd.Timestamp.now(tz="America/Lima").strftime("%Y-%m-%d")
-filas = []
-for s in salidas.itertuples():
-    campos, extra = depurar(s.campos, s.modalidad)
-    # el JSON se publica seudonimizado, igual que los textos
-    texto_json = seudonimos.aplicar(json.dumps(campos, ensure_ascii=False), reemplazos)[0] if campos else s.respuesta
-    filas.append({"id": s.id, "modalidad": s.modalidad, "campos_json": texto_json, "modelo_llm": ex.CONFIG_LLM,
-                  "fecha": fecha_extraccion, "json_valido": s.json_valido, "claves_extra_descartadas": extra})
-extraccion = pd.DataFrame(filas)
+# solo las claves del esquema (si el modelo inventó otras, se descartan y se cuentan); el JSON se publica seudonimizado
+extraccion = ex.tabla_publicable(salidas.to_dict(orient="records"), reemplazos, fecha_extraccion)
 extraccion.to_csv(DATOS / "extraccion_llm.csv", index=False)
 print(f"datos/extraccion_llm.csv: {extraccion.shape} · claves inventadas descartadas: {extraccion['claves_extra_descartadas'].sum()}")
 extraccion.head(4)
@@ -389,7 +386,7 @@ comparativa.round(3)
 """),
 md(t("decision")),
 code("""
-OCR_ELEGIDO, ASR_ELEGIDO = "@@OCR_ELEGIDO@@", "@@ASR_ELEGIDO@@"
+OCR_ELEGIDO, ASR_ELEGIDO = "paddleocr_base", "fw_turbo"
 cer_elegido = float(tabla_ocr.set_index("clave").loc[OCR_ELEGIDO, "CER agregado"])
 wer_elegido = float(tabla_asr.set_index("clave").loc[ASR_ELEGIDO, "WER agregado"])
 

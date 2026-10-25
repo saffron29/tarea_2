@@ -103,3 +103,29 @@ def extraer(registro_id: str, texto: str, modalidad: str, tok=None, modelo=None)
                  "tokens_entrada": int(entrada["input_ids"].shape[1])}
     archivo.write_text(json.dumps(resultado, ensure_ascii=False, indent=1), encoding="utf-8")
     return resultado
+
+
+# ───────────────────────────────────────────────────────── tabla publicable
+CLAVES = {"documento": ["modalidad", "tema", "resumen", "emisor", "destinatario", "fecha", "lugar", "monto"],
+          "audio": ["modalidad", "tema", "resumen", "lugar", "fecha", "citas_clave", "numero_hablantes"]}
+
+
+def depurar(campos, modalidad: str):
+    """Deja solo las claves del esquema, en orden. Devuelve (campos, número de claves inventadas descartadas)."""
+    if not isinstance(campos, dict):
+        return None, 0
+    extra = [k for k in campos if k not in CLAVES[modalidad]]
+    return {k: campos.get(k) for k in CLAVES[modalidad]}, len(extra)
+
+
+def tabla_publicable(salidas, reemplazos: dict, fecha: str):
+    """datos/extraccion_llm.csv: id, modalidad, campos_json (seudonimizado), modelo_llm, fecha y controles."""
+    import pandas as pd
+    from seudonimos import aplicar
+    filas = []
+    for s in salidas:
+        campos, extra = depurar(s["campos"], s["modalidad"])
+        texto_json = aplicar(json.dumps(campos, ensure_ascii=False), reemplazos)[0] if campos else s["respuesta"]
+        filas.append({"id": s["id"], "modalidad": s["modalidad"], "campos_json": texto_json, "modelo_llm": CONFIG_LLM,
+                      "fecha": fecha, "json_valido": s["json_valido"], "claves_extra_descartadas": extra})
+    return pd.DataFrame(filas)
