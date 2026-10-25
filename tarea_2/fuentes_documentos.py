@@ -66,7 +66,7 @@ def licencia_commons(titulo: str) -> dict:
     return {"licencia": meta.get("LicenseShortName", {}).get("value", ""), "fuente_url": info["descriptionurl"]}
 
 
-def pagina_a_imagen(pdf: Path, numero: int, destino: Path, dpi: int = 200, max_lado: int = 3000) -> Path:
+def pagina_a_imagen(pdf: Path, numero: int, destino: Path, dpi: int = 200, max_lado: int = 2000) -> Path:
     """Una página de un PDF -> imagen. Si la página es una sola imagen incrustada, se usa tal cual
     (sin volver a rasterizarla); si no, se renderiza a `dpi`."""
     if destino.exists():
@@ -81,7 +81,7 @@ def pagina_a_imagen(pdf: Path, numero: int, destino: Path, dpi: int = 200, max_l
         pix = pagina.get_pixmap(dpi=dpi)
         imagen = Image.open(io.BytesIO(pix.tobytes("png")))
     imagen = imagen.convert("RGB")
-    imagen.thumbnail((max_lado, max_lado))  # PaddleOCR reduce igual las imágenes grandes
+    imagen.thumbnail((max_lado, max_lado))  # en CPU, el detector tarda según los píxeles
     destino.parent.mkdir(parents=True, exist_ok=True)
     imagen.save(destino, quality=92)
     return destino

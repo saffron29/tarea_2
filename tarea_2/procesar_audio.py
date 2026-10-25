@@ -58,6 +58,29 @@ def procesar_clip(clip_id: str, transcriptor: Transcriptor | None = None) -> dic
     return resumen
 
 
+def diarizar_por_tramos(clip_id: str, transcriptor: Transcriptor | None = None, silencio_min: float = 0.3,
+                        max_tramo: float = 12.0) -> dict:
+    """Segunda pasada para clips con varias voces: el VAD corta tramos cortos (una sola voz cada uno),
+    se transcribe cada tramo por separado y después se diariza. Resultado en caché."""
+    archivo = SALIDAS / f"{clip_id}_tramos.json"
+    if archivo.exists():
+        return json.loads(archivo.read_text(encoding="utf-8"))
+    from voz import tramos_de_voz
+    transcriptor = transcriptor or Transcriptor(MODELO_ASR)
+    audio = cargar_audio(AUDIO / "wav" / f"{clip_id}.wav")
+    t0 = time.perf_counter()
+    segmentos = []
+    for a, b in tramos_de_voz(audio, silencio_min=silencio_min, max_tramo=max_tramo):
+        texto = transcriptor.transcribir(audio[int(a * SR):int(b * SR)], "es").strip()
+        if texto:
+            segmentos.append(Segmento(round(a, 2), round(b, 2), texto))
+    segmentos = diarizar(audio, segmentos, umbral=UMBRAL_DIARIZACION)
+    resultado = {"id": clip_id, "segundos_procesamiento": round(time.perf_counter() - t0, 1),
+                 "segmentos": a_tabla(segmentos).to_dict(orient="records")}
+    archivo.write_text(json.dumps(resultado, ensure_ascii=False, indent=1), encoding="utf-8")
+    return resultado
+
+
 if __name__ == "__main__":
     ids = sorted(p.stem for p in (AUDIO / "wav").glob("clip_*.wav"))
     pendientes = [i for i in ids if not (SALIDAS / f"{i}.json").exists()]

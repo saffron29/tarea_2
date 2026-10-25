@@ -1,8 +1,11 @@
 """OCR del corpus de documentos con PaddleOCR 3.7 (sesión 10).
 
-Configuración base, la misma de la clase: modelo PP-OCRv6 (detector + reconocedor multilingüe que
-cubre el español), motor PyTorch en CPU y sin pasos previos (no gira la página, no la «plancha»
-ni gira las líneas). El resultado crudo de cada imagen (texto, confianza y caja de cada línea) se
+Configuración base, la de la clase: modelo PP-OCRv6 medium (detector + reconocedor multilingüe que
+cubre el español) y sin pasos previos (no gira la página, no la «plancha» ni gira las líneas).
+Dos ajustes de entorno, no de modelo, porque la laptop es una CPU Intel i5-8250U sin GPU útil:
+- motor nativo PaddlePaddle con oneDNN desactivado: el motor PyTorch de la clase tardaba más de
+  10 min por imagen y oneDNN en Paddle 3.3.1 para Windows falla con NotImplementedError;
+- las imágenes se reducen a 2000 px en su lado mayor antes del OCR (preprocesamiento). El resultado crudo de cada imagen (texto, confianza y caja de cada línea) se
 guarda en datos/raw/documentos/ocr/ como respaldo.
 
     uv run python procesar_documentos.py
@@ -97,7 +100,7 @@ def preparar_imagen(fila) -> Path:
             ancho, alto = imagen.size
             imagen = imagen.crop((0, int(0.03 * alto), ancho, int(0.62 * alto)))
             imagen.save(CARPETA / "recortes" / f"{doc_id}_manuscrito.jpg", quality=92)
-        imagen.thumbnail((3000, 3000))
+        imagen.thumbnail((2000, 2000))
         imagen.save(destino, quality=92)
         return destino
     return pagina_a_imagen(FUENTES_PROPIAS / origen, pagina, destino)
@@ -115,12 +118,12 @@ OPCIONES = dict(
     use_doc_unwarping=False,              # no "planchar" hojas dobladas
     use_textline_orientation=False,       # no girar cada línea
 )
-CONFIG_OCR = "PaddleOCR 3.7.0 · PP-OCRv6 (det + rec multilingüe) · engine=transformers, CPU · sin orientación ni desdoblado"
+CONFIG_OCR = "PaddleOCR 3.7.0 · PP-OCRv6 medium (det + rec multilingüe) · motor Paddle en CPU (sin oneDNN) · imagen ≤2000 px · sin orientación ni desdoblado"
 
 
 def crear_ocr():
     from paddleocr import PaddleOCR
-    return PaddleOCR(engine="transformers", device="cpu", **OPCIONES)
+    return PaddleOCR(device="cpu", enable_mkldnn=False, cpu_threads=4, **OPCIONES)
 
 
 def leer(ocr, ruta: Path) -> pd.DataFrame:
