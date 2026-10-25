@@ -1,0 +1,46 @@
+# Entorno con el que se ejecutaron los notebooks 01 y 02 (Windows 10, Python 3.12, solo CPU).
+# Equivale a los grupos `docai` y `audio` del curso. Instalar con:
+#   uv venv --python 3.12 && uv pip install -r requirements-notebooks.txt -c constraints.txt
+# constraints.txt fija opencv 4.10.0.84 (PaddleX) y av<19 (faster-whisper 1.2.1), como el pyproject del curso.
+
+# OCR
+paddleocr==3.7.0
+paddlex==3.7.2
+paddlepaddle==3.3.1
+easyocr==1.7.2
+pymupdf==2.0
+pillow==13.0.0
+opencv-contrib-python==4.10.0.84
+
+# Audio
+faster-whisper==1.2.1
+ctranslate2==4.8.3
+av==18.1.0
+pyannote-audio==4.0.7
+soundfile==0.14.0
+librosa==1.0.0
+jiwer==4.0.0
+rapidfuzz==3.14.6
+
+# Modelos de Hugging Face (Qwen3-ASR, Qwen3-1.7B, NER)
+torch==2.14.1
+torchaudio==2.11.0
+torchvision==0.29.1
+transformers==5.20.2
+accelerate==1.15.0
+huggingface-hub==2.3.0
+
+# Datos, gráficos y notebooks
+numpy==2.3.5
+pandas==3.1.0
+scipy==1.18.1
+scikit-learn==1.9.1
+matplotlib==3.11.2
+plotly==7.1.0
+kaleido==1.5.0
+requests==2.34.2
+nbformat==5.11.1
+nbconvert==7.17.2
+ipykernel==7.4.0
+jupyter==1.1.1
+streamlit==1.66.1

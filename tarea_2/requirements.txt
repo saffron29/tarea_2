@@ -1,0 +1,7 @@
+# Dependencias de la app (streamlit run app.py). La app solo lee CSV y JSON ya calculados:
+# no necesita PaddleOCR, Whisper ni el LLM. Probado con Python 3.12.
+streamlit==1.66.1
+pandas==3.1.0
+plotly==7.1.0
+
+# Los notebooks (OCR, ASR, evaluación y LLM) usan el entorno completo de requirements-notebooks.txt
