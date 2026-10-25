@@ -1,0 +1,27 @@
+# Corpus original, respaldos crudos y salidas pesadas: no se versionan (ver datos/fuentes.csv)
+datos/raw/
+
+# Pesos de modelos: superan los 100 MB que acepta GitHub
+modelos/*.safetensors
+modelos/*.bin
+modelos/*.pt
+modelos/*.onnx
+modelos/checkpoint-*/
+
+# Tabla privada de equivalencias de la seudonimización (contiene los nombres reales)
+datos/privado/
+
+# Entornos y secretos
+.venv*/
+venv/
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Artefactos generados
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
